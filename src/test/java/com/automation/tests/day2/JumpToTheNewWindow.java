@@ -40,9 +40,10 @@ public class JumpToTheNewWindow {
             }
         }
         System.out.println("AFTER SWITCH :"+driver.getCurrentUrl());
+    // break until 5:02
 
-
-        driver.close();
+//        driver.close();
+        driver.quit();
     }
 
     /**
