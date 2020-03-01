@@ -21,7 +21,8 @@ public class BasicNavigation {
         //In selenium, everything starts from WebDriver interface'
         //ChromeDriver extends RemoteWebDriver --> implements WebDriver
         driver.get("http://google.com");//to open a website
-
+        driver.manage().window().maximize();//to maximize browser
+//        driver.manage().window().fullscreen();
         Thread.sleep(3000);//for demo, wait 3 seconds
         //method that return page title
         //you can also see it as tab name, in the browser
@@ -35,11 +36,25 @@ public class BasicNavigation {
         }else{
             System.out.println("TEST FAILED!");
         }
+        //go to another website within the same window
+        driver.navigate().to("http://amazon.com");
 
-        //LET'S GO EAT!!!!!!!
+        if(driver.getTitle().toLowerCase().contains("amazon")){
+            System.out.println("TEST PASSED!");
+        }else{
+            System.out.println("TEST FAILED!");
+        }
 
         //must be at the end
         driver.close();//to close browser
         //browser cannot close itself
+    }
+
+    public static void verifyEquals(String arg1, String arg2){
+        if(arg1.equals(arg2)){
+            System.out.println("TEST PASSED!");
+        }else{
+            System.out.println("TEST FAILED");
+        }
     }
 }
