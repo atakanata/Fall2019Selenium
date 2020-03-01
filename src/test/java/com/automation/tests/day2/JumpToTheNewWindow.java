@@ -4,7 +4,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class QuitVsClose {
+public class JumpToTheNewWindow {
 
     public static void main(String[] args) throws Exception{
         WebDriverManager.chromedriver().setup();
@@ -15,7 +15,12 @@ public class QuitVsClose {
 
         Thread.sleep(5000);
 
-//        driver.close(); will close only one window
-        driver.quit(); //to close all windows
+        //every window has some id, this id calls window handle
+        //based on window handle, we can switch in between windows
+        String windowHandle = driver.getWindowHandle();
+
+        System.out.println(windowHandle);
+
+
     }
 }
