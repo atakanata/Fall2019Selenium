@@ -59,8 +59,12 @@ public class BasicNavigation {
 
         System.out.println("Title: "+driver.getTitle());
         //driver.getTitle() - returns page title of the page that is currently opened
+        //to get URL
+        System.out.println("URL: "+ driver.getCurrentUrl());
+        driver.navigate().refresh();//to reload page
+        Thread.sleep(3000);//for demo, wait 3 seconds
 
-
+        //driver.navigate().to() = driver.get()
         //must be at the end
         driver.close();//to close browser
         //browser cannot close itself
