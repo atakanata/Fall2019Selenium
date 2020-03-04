@@ -9,7 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class FindElementsPractice {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
 //        WebDriverManager.chromedriver().setup();
 //        WebDriver driver = new ChromeDriver();
 
@@ -18,13 +18,20 @@ public class FindElementsPractice {
         WebElement fullName = driver.findElement(By.name("full_name"));
         fullName.sendKeys("Mister Twister");
 
+        Thread.sleep(2000);
+
         WebElement email = driver.findElement(By.name("email"));
         email.sendKeys("sdet@cybertek.com");
+
+        Thread.sleep(2000);
 
         WebElement signUp = driver.findElement(By.name("wooden_spoon"));
         //when you see type="submit", you can use submit() instead of click()
         //it make sense to use when click() method doesn't work
         signUp.submit();
+        Thread.sleep(2000);
+
+
 
         driver.quit();//to close everything
     }
