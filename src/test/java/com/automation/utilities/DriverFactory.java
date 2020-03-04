@@ -7,6 +7,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class DriverFactory {
     /**
+     * You homework will be to improve this method!
      * This method return webdriver object based on browser type
      * If you want to use chrome browser, just provide chrome as a parameter
      * @param browserName
