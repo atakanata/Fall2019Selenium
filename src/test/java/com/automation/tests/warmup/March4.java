@@ -23,12 +23,22 @@ public class March4 {
      * click on search button   searchButton.click();
      * print number of results
      */
-    public static void ebayTest(){
+    public static void ebayTest() throws Exception {
         WebDriver driver = DriverFactory.createDriver("chrome");
         driver.get("http://ebay.com");
+
+        Thread.sleep(2000);//to wait 2 seconds
+
         driver.findElement(By.id("gh-ac")).sendKeys("java book");
+
+        Thread.sleep(2000);//to wait 2 seconds
+
         driver.findElement(By.id("gh-btn")).click();
+
+        Thread.sleep(4000);//to wait 2 seconds
+
         WebElement searchResults = driver.findElement(By.tagName("h1"));
+
 
         String[] searchSentence = searchResults.getText().split(" ");
         System.out.println(Arrays.toString(searchSentence));
@@ -49,7 +59,7 @@ public class March4 {
         //enter text and click ENTER
         driver.findElement(By.id("twotabsearchtextbox")).sendKeys("java book", Keys.ENTER);
 
-        Thread.sleep(2000);//to wait 2 seconds
+        Thread.sleep(4000);//to wait 2 seconds
 
         String title = driver.getTitle();
         if(title.contains("java book")){
@@ -69,15 +79,22 @@ public class March4 {
      */
     public static void wikiTest() throws Exception{
         driver = DriverFactory.createDriver("chrome");
+        //Go to wikipedia.org
         driver.get("https://en.wikipedia.org/wiki/Main_Page");
 
-        driver.findElement(By.id("searchInput")).sendKeys("selenium webdriver", Keys.ENTER);
+        //enter search term `selenium webdriver` & click on search button
+        driver.findElement(By.id("searchInput")).sendKeys("selenium webdriver", Keys.RETURN);
+
+        Thread.sleep(3000);
+
+        //click on search result `Selenium (software)`
         driver.findElement(By.partialLinkText("Selenium (software)")).click();
 
         Thread.sleep(2000);
 
         String link = driver.getCurrentUrl(); // to get link as a String
 
+        //verify url ends with `Selenium_(software)`
         if(link.endsWith("Selenium_(software)")){
             System.out.println("TEST PASSED");
         }else {
