@@ -22,6 +22,8 @@ public class FindElementsTest {
 
         for(WebElement link: links){
             System.out.println(link.getText());
+            System.out.println(link.getAttribute("href"));
+            System.out.println();
         }
 
 
