@@ -2,6 +2,7 @@ package com.automation.tests.warmup;
 
 import com.automation.utilities.DriverFactory;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -21,7 +22,7 @@ public class March4 {
      * print number of results
      */
     public static void ebayTest(){
-        driver = DriverFactory.createDriver("chrome");
+        WebDriver driver = DriverFactory.createDriver("chrome");
         driver.get("http://ebay.com");
         driver.findElement(By.id("gh-ac")).sendKeys("java book");
         driver.findElement(By.id("gh-btn")).click();
@@ -38,9 +39,15 @@ public class March4 {
      */
     public static void amazonTest(){
         driver = DriverFactory.createDriver("chrome");
-
-
-
+        driver.get("http://amazon.com");
+        //enter text and click ENTER
+        driver.findElement(By.id("twotabsearchtextbox")).sendKeys("java book", Keys.ENTER);
+        String title = driver.getTitle();
+        if(title.contains("java book")){
+            System.out.println("TEST PASSED");
+        }else {
+            System.out.println("TEST FAILED");
+        }
         driver.quit();
     }
 
