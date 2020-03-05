@@ -33,6 +33,7 @@ public class FindElementsTest {
 //            Thread.sleep(2000);
 
             driver.navigate().back();
+
 //            Thread.sleep(2000);
             //refresh list
             links = driver.findElements(By.tagName("a"));
