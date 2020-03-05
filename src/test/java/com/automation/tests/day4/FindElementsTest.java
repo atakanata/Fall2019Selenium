@@ -20,10 +20,20 @@ public class FindElementsTest {
         //how to collect all links from the page?
         List<WebElement> links = driver.findElements(By.tagName("a"));
 
+
+
         for(WebElement link: links){
             System.out.println(link.getText());
             System.out.println(link.getAttribute("href"));
             System.out.println();
+        }
+
+        for(int i=1; i < links.size(); i++){
+            links.get(i).click();
+            Thread.sleep(2000);
+
+            driver.navigate().back();
+            Thread.sleep(2000);
         }
 
 
