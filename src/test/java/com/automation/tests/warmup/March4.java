@@ -25,21 +25,24 @@ public class March4 {
      */
     public static void ebayTest() throws Exception {
         WebDriver driver = DriverFactory.createDriver("chrome");
+        //Go to ebay
         driver.get("http://ebay.com");
 
         Thread.sleep(2000);//to wait 2 seconds
 
+        //enter search term
         driver.findElement(By.id("gh-ac")).sendKeys("java book");
 
         Thread.sleep(2000);//to wait 2 seconds
 
+        //click on search button
         driver.findElement(By.id("gh-btn")).click();
 
         Thread.sleep(4000);//to wait 2 seconds
 
         WebElement searchResults = driver.findElement(By.tagName("h1"));
 
-
+        //print number of results
         String[] searchSentence = searchResults.getText().split(" ");
         System.out.println(Arrays.toString(searchSentence));
 
@@ -55,13 +58,16 @@ public class March4 {
      */
     public static void amazonTest() throws Exception{
         driver = DriverFactory.createDriver("chrome");
+        //go to amazon
         driver.get("http://amazon.com");
-        //enter text and click ENTER
+        //enter search term + click on search button
         driver.findElement(By.id("twotabsearchtextbox")).sendKeys("java book", Keys.ENTER);
 
         Thread.sleep(4000);//to wait 2 seconds
 
         String title = driver.getTitle();
+
+        //verify title contains search term
         if(title.contains("java book")){
             System.out.println("TEST PASSED");
         }else {
@@ -97,7 +103,7 @@ public class March4 {
         //verify url ends with `Selenium_(software)`
         if(link.endsWith("Selenium_(software)")){
             System.out.println("TEST PASSED");
-        }else {
+        } else {
             System.out.println("TEST FAILED");
         }
 
