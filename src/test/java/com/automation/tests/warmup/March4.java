@@ -77,6 +77,7 @@ public class March4 {
         Thread.sleep(2000);
 
         String link = driver.getCurrentUrl(); // to get link as a String
+
         if(link.endsWith("Selenium_(software)")){
             System.out.println("TEST PASSED");
         }else {
