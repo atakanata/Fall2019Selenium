@@ -6,12 +6,14 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.Arrays;
+
 public class March4 {
     static WebDriver driver;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
         ebayTest();
-//        amazonTest();
+        amazonTest();
 //        wikiTest();
     }
 
@@ -27,7 +29,11 @@ public class March4 {
         driver.findElement(By.id("gh-ac")).sendKeys("java book");
         driver.findElement(By.id("gh-btn")).click();
         WebElement searchResults = driver.findElement(By.tagName("h1"));
-        System.out.println(searchResults.getText().split(" ")[0]);
+
+        String[] searchSentence = searchResults.getText().split(" ");
+        System.out.println(Arrays.toString(searchSentence));
+
+        System.out.println(searchSentence[0]);
         driver.quit();
     }
 
@@ -37,11 +43,14 @@ public class March4 {
      * click on search button
      * verify title contains search term
      */
-    public static void amazonTest(){
+    public static void amazonTest() throws Exception{
         driver = DriverFactory.createDriver("chrome");
         driver.get("http://amazon.com");
         //enter text and click ENTER
         driver.findElement(By.id("twotabsearchtextbox")).sendKeys("java book", Keys.ENTER);
+
+        Thread.sleep(2000);//to wait 2 seconds
+
         String title = driver.getTitle();
         if(title.contains("java book")){
             System.out.println("TEST PASSED");
@@ -60,7 +69,7 @@ public class March4 {
      */
     public static void wikiTest(){
         driver = DriverFactory.createDriver("chrome");
-
+        driver.get("https://en.wikipedia.org/wiki/Main_Page");
 
 
         driver.quit();
