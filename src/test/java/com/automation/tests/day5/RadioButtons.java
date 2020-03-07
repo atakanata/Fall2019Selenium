@@ -29,7 +29,7 @@ public class RadioButtons {
             //<input type="radio" id="red" name="color">
             String id = radioButton.getAttribute("id");
 
-            //return true if button already clicked
+            //returns true if button already clicked
             boolean isSelected = radioButton.isSelected();
             System.out.println(id+" is selected? "+isSelected);
 
@@ -44,6 +44,7 @@ public class RadioButtons {
             } else {
                 System.out.println("Button is disabled, not clicked :: "+id);
             }
+            System.out.println();
         }
 
         driver.quit();
