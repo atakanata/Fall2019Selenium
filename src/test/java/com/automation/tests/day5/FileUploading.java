@@ -10,7 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class FileUploading {
 
     public static void main(String[] args) {
-        WebDriverManager.chromedriver().setup();
+        WebDriverManager.chromedriver().version("79").setup();
         WebDriver driver = new ChromeDriver();
 
         driver.get("http://practice.cybertekschool.com/upload");
@@ -23,6 +23,9 @@ public class FileUploading {
         String filePath = System.getProperty("user.dir")+"/pom.xml";
 
         upload.sendKeys(filePath);
+
+        driver.findElement(By.id("file-submit")).click();//click to upload
+
 
         BrowserUtils.wait(5);
         driver.quit();
