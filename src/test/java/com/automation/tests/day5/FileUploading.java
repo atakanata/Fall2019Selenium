@@ -24,10 +24,12 @@ public class FileUploading {
         //it work only for my computer because only have this file
         //and my computer username is different than yours
         String file2Path = "/Users/studio2/Downloads/image (2).png";
+//        doesn't work, should be on your computer
+//        String cloudFile = "https://cybertek-appium.s3.amazonaws.com/etsy.apk";
 
         System.out.println(filePath);//print path
 
-        upload.sendKeys(filePath);
+        upload.sendKeys(file2Path);
 
         driver.findElement(By.id("file-submit")).click();//click to upload
 
