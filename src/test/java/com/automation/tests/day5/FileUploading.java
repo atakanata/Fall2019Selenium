@@ -21,6 +21,11 @@ public class FileUploading {
         //https://docs.oracle.com/javase/tutorial/essential/environment/sysprop.html
         //I am gonna upload pom.xml file
         String filePath = System.getProperty("user.dir")+"/pom.xml";
+        //it work only for my computer because only have this file
+        //and my computer username is different than yours
+        String file2Path = "/Users/studio2/Downloads/image (2).png";
+
+        System.out.println(filePath);//print path
 
         upload.sendKeys(filePath);
 
