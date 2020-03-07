@@ -21,7 +21,13 @@ public class RadioButtonsTest {
         //<input type="radio" id="black" name="color">
         WebElement blackButton = driver.findElement(By.id("black"));
 
-        blackButton.click();
+        //if visible and eligible to click
+       if(blackButton.isDisplayed() && blackButton.isEnabled()){
+           System.out.println("CLICKED ON BLACK BUTTON");
+           blackButton.click();
+       }else {
+           System.out.println("FAILED TO CLICK ON BLACK BUTTON");
+       }
 
         //how do we verify that button clicked
         //returns true, if button clicked
