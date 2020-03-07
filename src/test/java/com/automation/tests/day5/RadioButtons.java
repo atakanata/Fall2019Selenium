@@ -28,6 +28,11 @@ public class RadioButtons {
 
             //<input type="radio" id="red" name="color">
             String id = radioButton.getAttribute("id");
+
+            //return true if button already clicked
+            boolean isSelected = radioButton.isSelected();
+            System.out.println(id+" is selected? "+isSelected);
+
             //if button is eligible to click
             //returns true of you can click on the button
             if(radioButton.isEnabled()) {
