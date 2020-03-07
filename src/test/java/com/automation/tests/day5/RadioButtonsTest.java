@@ -17,7 +17,7 @@ public class RadioButtonsTest {
 
         WebDriver driver = DriverFactory.createDriver("chrome");
         driver.get("http://practice.cybertekschool.com/radio_buttons");
-        BrowserUtils.wait(2);
+        BrowserUtils.wait(4);
         //<input type="radio" id="black" name="color">
         WebElement blackButton = driver.findElement(By.id("black"));
 
@@ -28,6 +28,8 @@ public class RadioButtonsTest {
        }else {
            System.out.println("FAILED TO CLICK ON BLACK BUTTON");
        }
+
+        BrowserUtils.wait(2);
 
         //how do we verify that button clicked
         //returns true, if button clicked
