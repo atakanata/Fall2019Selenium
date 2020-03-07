@@ -14,10 +14,15 @@ public class TestForiFrame {
         WebDriver driver = new ChromeDriver();
         driver.get("http://practice.cybertekschool.com/iframe");
         BrowserUtils.wait(4);
+        //before looking for that element, we need to jump to that frame
+        driver.switchTo().frame("mce_0_ifr");
+        //now, this content will be visible
         WebElement textInput = driver.findElement(By.id("tinymce"));
 
         System.out.println(textInput.getText());
 
+        //exit from the frame
+        driver.switchTo().defaultContent();
 
         driver.quit();
     }
