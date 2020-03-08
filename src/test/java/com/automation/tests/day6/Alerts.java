@@ -2,6 +2,7 @@ package com.automation.tests.day6;
 
 import com.automation.utilities.BrowserUtils;
 import com.automation.utilities.DriverFactory;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -55,6 +56,34 @@ public class Alerts {
             System.out.println("Expected: "+expected2);
             System.out.println("Actual:   "+actual2);
         }
+//####################################################################################
+
+        //TASK for 5 minutes until 3:37: click on button #3
+        //Enter some text: Hello, World!
+        //Verify that result text ends with Hello, World!
+        buttons.get(2).click();
+
+        BrowserUtils.wait(3);
+
+        Alert alert = driver.switchTo().alert();
+
+        alert.sendKeys("Hello, World!");//enter text
+        alert.accept();// click ok
+
+        String actual3 = driver.findElement(By.id("result")).getText();
+        String expected3 = "Hello, World!";
+
+        if(actual3.endsWith(expected3)){
+            System.out.println("TEST PASSED");
+        }else {
+            System.out.println("TEST FAILED");
+            System.out.println("Expected: "+expected3);
+            System.out.println("Actual:   "+actual3);
+        }
+
+
+
+
 
 
         BrowserUtils.wait(3);
