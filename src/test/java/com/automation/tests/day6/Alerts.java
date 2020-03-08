@@ -27,7 +27,7 @@ public class Alerts {
         String expected = "You successfully clicked an alert";
         String actual = driver.findElement(By.id("result")).getText();
 
-        //if will fail, because there is a typo
+        //if will fail, because there is a typo ##BUG##
         if(expected.equals(actual)){
             System.out.println("TEST PASSED");
         }else {
@@ -36,6 +36,12 @@ public class Alerts {
             System.out.println("Actual:   "+actual);
 
         }
+        BrowserUtils.wait(3);
+
+
+
+
+
         BrowserUtils.wait(3);
         driver.quit();
     }
