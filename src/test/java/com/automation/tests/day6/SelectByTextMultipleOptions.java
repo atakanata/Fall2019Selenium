@@ -13,10 +13,16 @@ public class SelectByTextMultipleOptions {
         driver.get("http://practice.cybertekschool.com/dropdown");
         BrowserUtils.wait(3);
         Select languagesSelect = new Select(driver.findElement(By.name("Languages")));
-//        Whether this select element support selecting multiple options at the same time? This
-//                *         is done by checking the value of the "multiple" attribute.
+//        Whether this select element support selecting multiple options at the same time?
+//        This is done by checking the value of the "multiple" attribute.
         boolean isMultiple = languagesSelect.isMultiple();
-        System.out.println(isMultiple);
+        System.out.println(isMultiple); //--> if it's true, you can select more than one option
+
+        languagesSelect.selectByVisibleText("Java");
+        languagesSelect.selectByVisibleText("JavaScript");
+        languagesSelect.selectByVisibleText("Python");
+
+
 
         BrowserUtils.wait(3);
         driver.quit();
