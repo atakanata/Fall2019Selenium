@@ -31,7 +31,7 @@ public class Xpath {
         btn3.click();
         System.out.println(result.getText());
 
-        WebElement btn4 = driver.findElement(By.id("//button[contains(@id,'_button')][1]"));
+        WebElement btn4 = driver.findElement(By.xpath("//button[contains(@id,'_button')][1]"));
         btn4.click();
         System.out.println(result.getText());
 
