@@ -29,7 +29,7 @@ public class SelectByText {
         Select selectDay = new Select(driver.findElement(By.id("day")));
 
         selectDay.selectByVisibleText("1");
-        selectMonth.selectByVisibleText("1");
+        selectMonth.selectByVisibleText("February");
         selectYear.selectByVisibleText("2003");
 
 
