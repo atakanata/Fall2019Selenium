@@ -29,6 +29,7 @@ public class Alerts {
         String actual = driver.findElement(By.id("result")).getText();
 
         //if will fail, because there is a typo ##BUG##
+        System.out.println("TEST #1");
         if(expected.equals(actual)){
             System.out.println("TEST PASSED");
         }else {
@@ -40,6 +41,7 @@ public class Alerts {
         BrowserUtils.wait(3);
 
 //####################################################################################
+        System.out.println("TEST #2");
 
         buttons.get(1).click();//to click on the 2nd button
         BrowserUtils.wait(3);
@@ -57,6 +59,7 @@ public class Alerts {
             System.out.println("Actual:   "+actual2);
         }
 //####################################################################################
+        System.out.println("TEST #3");
 
         //TASK for 5 minutes until 3:37: click on button #3
         //Enter some text: Hello, World!
