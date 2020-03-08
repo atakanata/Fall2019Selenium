@@ -22,6 +22,10 @@ public class Xpath {
         WebElement result = driver.findElement(By.id("result"));
         System.out.println(result.getText());
 
+        //click on button #2
+        WebElement btn2 = driver.findElement(By.xpath("//button[text()='Button 2']"));
+        btn2.click();
+
 
 
         BrowserUtils.wait(3);
