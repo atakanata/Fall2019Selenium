@@ -7,6 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.List;
+
 public class SelectByText {
 
     public static void main(String[] args) {
@@ -28,11 +30,22 @@ public class SelectByText {
         Select selectMonth = new Select(driver.findElement(By.id("month")));
         Select selectDay = new Select(driver.findElement(By.id("day")));
 
-        selectDay.selectByVisibleText("1");
-        selectMonth.selectByVisibleText("February");
         selectYear.selectByVisibleText("2003");
+        selectMonth.selectByVisibleText("February");
+        selectDay.selectByVisibleText("25");
 
+        BrowserUtils.wait(5);
 
+        //select all months one by one
+        //.getOptions(); - returns all options from dropdown as List<WebElement>
+        List<WebElement> months = selectMonth.getOptions();
+        for(WebElement eachMonth: months){
+            //get the month name and select based on that
+            String monthName = eachMonth.getText();
+            selectMonth.selectByVisibleText(monthName);
+            BrowserUtils.wait(1);
+
+        }
         BrowserUtils.wait(3);
         driver.quit();
     }
