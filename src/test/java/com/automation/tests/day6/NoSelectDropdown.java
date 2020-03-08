@@ -25,10 +25,6 @@ public class NoSelectDropdown {
             System.out.println(link.getText()+" : "+link.getAttribute("href"));
         }
 
-
-
-
-
         driver.findElement(By.linkText("Etsy")).click();//click on option
 
         BrowserUtils.wait(3);
