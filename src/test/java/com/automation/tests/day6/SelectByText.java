@@ -19,8 +19,9 @@ public class SelectByText {
         Select selectSimpleDropdown = new Select(simpleDropdown);
         //select by visible text
         selectSimpleDropdown.selectByVisibleText("Option 2");
-
-
+        BrowserUtils.wait(3);
+        //and select option 1
+        selectSimpleDropdown.selectByVisibleText("Option 1");
 
 
 
