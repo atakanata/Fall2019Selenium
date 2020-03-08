@@ -15,9 +15,12 @@ public class Xpath {
         //value can be inside '' or ""
         //if you don't know the tag name, or want to skip tag name, use *
         //for example //*[@onclick='button1()']  | * means any tag name
+
         WebElement btn1 = driver.findElement(By.xpath("//button[@onclick='button1()']"));
         btn1.click();
 
+        WebElement result = driver.findElement(By.id("result"));
+        System.out.println(result.getText());
 
 
 
