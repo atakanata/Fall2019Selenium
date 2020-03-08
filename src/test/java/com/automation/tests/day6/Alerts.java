@@ -71,6 +71,9 @@ public class Alerts {
         Alert alert = driver.switchTo().alert();
 
         alert.sendKeys("Hello, World!");//enter text
+        BrowserUtils.wait(3);
+
+
         alert.accept();// click ok
 
         String actual3 = driver.findElement(By.id("result")).getText();
