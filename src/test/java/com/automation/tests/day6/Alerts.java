@@ -38,6 +38,10 @@ public class Alerts {
         }
         BrowserUtils.wait(3);
 
+        buttons.get(1).click();//to click on the 2nd button
+        BrowserUtils.wait(3);
+        //to click cancel
+        driver.switchTo().alert().dismiss();
 
 
 
