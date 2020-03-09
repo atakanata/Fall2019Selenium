@@ -6,14 +6,16 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.safari.SafariDriver;
 
 public class FindElementsPractice {
 
     public static void main(String[] args) throws Exception{
 //        WebDriverManager.chromedriver().setup();
-//        WebDriver driver = new ChromeDriver();
+        RemoteWebDriver driver = new SafariDriver();
 
-        WebDriver driver = DriverFactory.createDriver("chrome");
+//        RemoteWebDriver driver = DriverFactory.createDriver("chrome");
         driver.get("http://practice.cybertekschool.com/sign_up");
         WebElement fullName = driver.findElement(By.name("full_name"));
         fullName.sendKeys("Mister Twister");
@@ -42,7 +44,6 @@ public class FindElementsPractice {
         }else {
             System.out.println("TEST FAILED");
         }
-
         driver.quit();//to close everything
     }
 }
