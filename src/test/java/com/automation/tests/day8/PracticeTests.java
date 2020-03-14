@@ -39,17 +39,31 @@ public class PracticeTests {
         //go to "Form Authentication" page
         driver.findElement(By.linkText("Form Authentication")).click();
 
-        BrowserUtils.wait(3);
+        BrowserUtils.wait(5);
+
         driver.findElement(By.name("username")).sendKeys("tomsmith");
         driver.findElement(By.name("password")).sendKeys("SuperSecretPassword", Keys.ENTER);
 
-        BrowserUtils.wait(3);
+        BrowserUtils.wait(5);
 
         String expected = "Welcome to the Secure Area. When you are done click logout below.";
         String actual = driver.findElement(By.className("subheader")).getText();
         //if assertion fails - it will throw exception and message will be printed
         //3 parameters: (expected, actual, "message in case of error")
         Assert.assertEquals(actual, expected, "Sub-header message is not matching!");
+    }
+
+    /**
+     * TASK for 5 minutes
+     * Given user is on the practice landing page
+     * When user navigates to "Forgot password" page
+     * Then user enters his email
+     * And clicks "Retrieve password" button
+     * Then user verifies that message "Your e-mail's been sent!" is displayed
+     */
+    @Test
+    public void forgotPasswordTest(){
+
     }
 
 
