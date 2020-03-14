@@ -1,5 +1,8 @@
 package com.automation.tests.day8;
 
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
 public class UnitTestPractice {
 
     public static void main(String[] args) {
@@ -14,6 +17,20 @@ public class UnitTestPractice {
         verifyEquals(expected, actual);
 
     }
+
+    //annotation
+    @Test(description = "Verify if method can reverse a string")
+    public void test(){
+        String expected = "elppa";
+        String actual = reverseString("apple");
+        //it coming from testng, junit also has this class
+        //you can compare any data types here: strings, primitives, arrays, objects
+        //to verify if expected result is equals to actual
+        Assert.assertEquals(actual, expected);
+
+    }
+
+
 
     public static boolean verifyEquals(String expected, String actual) {
         if (expected.equals(actual)) {
