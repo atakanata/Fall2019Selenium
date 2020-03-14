@@ -90,6 +90,19 @@ public class PracticeTests {
         driver.manage().window().maximize();
     }
 
+    /**
+     * TASK for 5 minutes
+     * Given user is on the practice landing page
+     * When user navigates to "Checkboxes" page
+     * And clicks on checkbox #1
+     * Then user verifies that checkbox #1 is selected
+     */
+
+    @Test
+    public void checkboxTest1(){
+
+    }
+
     @AfterMethod
     public void teardown(){
         driver.quit();
