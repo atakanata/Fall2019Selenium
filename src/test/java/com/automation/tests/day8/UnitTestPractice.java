@@ -19,15 +19,22 @@ public class UnitTestPractice {
     }
 
     //annotation
+    //description - is not working for junit, make sure that you use testng
     @Test(description = "Verify if method can reverse a string")
     public void test(){
-        String expected = "elppa";
+        String expected = "elpp";
         String actual = reverseString("apple");
         //it coming from testng, junit also has this class
         //you can compare any data types here: strings, primitives, arrays, objects
         //to verify if expected result is equals to actual
         Assert.assertEquals(actual, expected);
+    }
 
+    @Test(description = "Verify if method can reverse a string")
+    public void test2(){
+        String expected = "rac";
+        String actual = reverseString("car");
+        Assert.assertEquals(actual, expected);
     }
 
 
