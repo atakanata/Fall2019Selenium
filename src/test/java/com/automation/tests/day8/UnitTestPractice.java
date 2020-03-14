@@ -3,9 +3,15 @@ package com.automation.tests.day8;
 public class UnitTestPractice {
 
     public static void main(String[] args) {
+        //unit test
+        //to check if our method works properly
+        //if assertion fails, that means our method doesn't work correctly
+        //that means we have fix the method
         String expected = "cba";
         String toReverse = "abc";
         String actual = reverseString(toReverse);
+        //Assertion
+        verifyEquals(expected, actual);
 
     }
 
