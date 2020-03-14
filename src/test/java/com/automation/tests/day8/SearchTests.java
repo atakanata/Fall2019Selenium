@@ -60,6 +60,7 @@ public class SearchTests {
         driver.findElement(By.id("twotabsearchtextbox")).sendKeys("Java", Keys.ENTER);
         BrowserUtils.wait(5);
         //find all links inside h2 elements, because h2 element is no clickable itself
+        //hyperlinks must be clickable
         List<WebElement> searchItems = driver.findElements(By.xpath("//h2//a"));
 
         //click on the first item
