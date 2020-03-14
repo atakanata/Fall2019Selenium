@@ -63,7 +63,16 @@ public class PracticeTests {
      */
     @Test
     public void forgotPasswordTest(){
+        driver.findElement(By.linkText("Forgot Password")).click();
+        BrowserUtils.wait(5);
 
+        driver.findElement(By.name("email")).sendKeys("testemail@email.com", Keys.ENTER);
+        BrowserUtils.wait(3);
+
+        String actual = driver.findElement(By.name("confirmation_message")).getText();
+        String expected = "Your e-mail's been sent!";
+
+        Assert.assertEquals(actual, expected, "Confirmation message is not valid!");
     }
 
 
