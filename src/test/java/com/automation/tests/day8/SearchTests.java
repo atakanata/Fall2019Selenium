@@ -20,8 +20,9 @@ public class SearchTests {
     @Test
     public void googleSearchTest(){
         driver.get("http://google.com");
+        BrowserUtils.wait(3);
         driver.findElement(By.name("q")).sendKeys("java", Keys.ENTER);
-        BrowserUtils.wait(2);
+        BrowserUtils.wait(5);
         //since every search item has a tag name <h3>
         //it's the easiest way to collect all of them
         List<WebElement> searchItems = driver.findElements(By.tagName("h3"));
@@ -31,10 +32,21 @@ public class SearchTests {
             if(!var.isEmpty()){
                 System.out.println(var);
                 //verify that every search result contains java
+                //is some of the search results
+                //doesn't contain java word, it will fail the test
                 Assert.assertTrue(var.toLowerCase().contains("java"));
+                System.out.println(var.toLowerCase());
+                System.out.println();
             }
         }
     }
+
+    @Test(description = "Search for Java book on amazon")
+    public void amazonSearchTest(){
+        driver.get("http://amazon.com");
+    }
+
+
 
     @BeforeMethod
     public void setup(){
