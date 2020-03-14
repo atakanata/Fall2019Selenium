@@ -7,6 +7,7 @@ public class BasicTestNGTests {
 
     @Test
     public void test1() {
+        System.out.println("TEST 1");
         String expected = "apple";
         String actual = "apple";
         Assert.assertEquals(actual, expected);
@@ -14,6 +15,7 @@ public class BasicTestNGTests {
 
     @Test
     public void test2() {
+        System.out.println("TEST 2");
         int num1 = 5;
         int num2 = 10;
         //it calls hard assertion.
