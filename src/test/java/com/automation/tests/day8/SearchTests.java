@@ -51,6 +51,24 @@ public class SearchTests {
     @Test(description = "Search for Java book on amazon")
     public void amazonSearchTest(){
         driver.get("http://amazon.com");
+        BrowserUtils.wait(5);
+
+        driver.findElement(By.id("twotabsearchtextbox")).sendKeys("Java", Keys.ENTER);
+        BrowserUtils.wait(5);
+
+        List<WebElement> searchItems = driver.findElements(By.tagName("h2"));
+
+        //click on the first item
+        searchItems.get(0).click();
+        BrowserUtils.wait(5);
+
+        WebElement productTitle = driver.findElement(By.id("productTitle"));
+        String productTitleString = productTitle.getText();
+        System.out.println(productTitleString);
+
+        Assert.assertTrue(productTitleString.contains("Java"));
+
+
     }
 
 
