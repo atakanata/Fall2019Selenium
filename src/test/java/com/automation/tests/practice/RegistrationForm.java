@@ -4,6 +4,7 @@ import com.automation.utilities.BrowserUtils;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
@@ -66,8 +67,14 @@ public class RegistrationForm {
         String actual = driver.findElement(By.tagName("p")).getText();
 
         Assert.assertEquals(actual, expected);
+    }
 
-
+    @Test
+    public void verifyFirstNameLengthTest(){
+        driver.findElement(firstNameBy).sendKeys("a");
+        BrowserUtils.wait(3);
+        WebElement warningMessage = driver.findElement(By.xpath("//small[text()='first name must be more than 2 and less than 64 characters long']"));
+        Assert.assertTrue(warningMessage.isDisplayed());
     }
 
 
