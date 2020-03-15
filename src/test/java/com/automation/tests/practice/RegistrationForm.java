@@ -77,6 +77,14 @@ public class RegistrationForm {
         Assert.assertTrue(warningMessage.isDisplayed());
     }
 
+    @Test
+    public void verifyAlphabeticLettersOnlyTest(){
+        driver.findElement(firstNameBy).sendKeys("123");
+        BrowserUtils.wait(3);
+        WebElement warningMessage = driver.findElement(By.xpath("//small[text()='first name can only consist of alphabetical letters']"));
+        Assert.assertTrue(warningMessage.isDisplayed());
+    }
+
 
     @BeforeMethod
     public void setup(){
