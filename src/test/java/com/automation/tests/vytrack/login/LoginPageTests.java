@@ -44,6 +44,18 @@ public class LoginPageTests {
         assertEquals(actual, expected);
     }
 
+    @Test(description = "Login as store manager and verify that tile is equals to Dashboard")
+    public void loginAsStoreManager(){
+        driver.findElement(usernameBy).sendKeys(username);
+        driver.findElement(passwordBy).sendKeys(password, Keys.ENTER);
+        BrowserUtils.wait(5);
+
+        String expected = "Dashboard";
+        String actual = driver.getTitle();
+
+        assertEquals(actual, expected, "Page title is not correct!");
+    }
+
 
     @BeforeMethod
     public void setup() {
