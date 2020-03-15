@@ -37,6 +37,8 @@ public class VehiclesPageTests {
 
     private By fleetBy = By.xpath("//span[@class='title title-level-1' and contains(text(),'Fleet')]");
     private By subtitleBy = By.className("oro-subtitle");
+    private By pageNumberBy = By.cssSelector("input[type='number']");
+
     private WebDriver driver;
 
     @Test
@@ -63,7 +65,10 @@ public class VehiclesPageTests {
      */
     @Test
     public void verifyPageNumber(){
+        String expected = "1";
+        String actual = driver.findElement(pageNumberBy).getAttribute("value");
 
+        Assert.assertEquals(actual, expected);
     }
 
 
