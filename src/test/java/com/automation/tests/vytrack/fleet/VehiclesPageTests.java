@@ -39,6 +39,7 @@ public class VehiclesPageTests {
 
     @Test
     public void verifyPageSubTitle(){
+        //login
         driver.findElement(usernameBy).sendKeys(username);
         driver.findElement(passwordBy).sendKeys(password, Keys.ENTER);
 
@@ -53,6 +54,7 @@ public class VehiclesPageTests {
 
         BrowserUtils.wait(5);
 
+        //find subtitle element
         WebElement subTitleElement = driver.findElement(subtitleBy);
         System.out.println(subTitleElement.getText());
 
