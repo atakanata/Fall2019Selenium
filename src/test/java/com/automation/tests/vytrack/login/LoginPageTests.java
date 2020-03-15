@@ -11,11 +11,17 @@ import static org.testng.Assert.*;
 
 public class LoginPageTests {
     private WebDriver driver;
+    //https is a secured version of http protocol
+    //http - it's hypertext transfer protocol that every single website is using now days
+    //https - data encrypted, no chance for hackers to retrieve info
+    //http - data as a plain text, very easy to hack it
+    private String URL = "https://qa2.vytrack.com/user/login";
 
     @BeforeMethod
     public void setup() {
         WebDriverManager.chromedriver().version("79").setup();
         driver = new ChromeDriver();
+        driver.get(URL);
         driver.manage().window().maximize();
     }
 
