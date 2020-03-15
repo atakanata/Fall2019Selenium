@@ -7,6 +7,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -45,8 +46,15 @@ public class VehiclesPageTests {
 
         //put more wait here as well, if didn't click
         BrowserUtils.wait(5);
+
         //click on fleet
-        driver.findElement(fleetBy).click();
+//        driver.findElement(fleetBy).click();
+        //Actions class is used for more advanced browser interactions
+        Actions actions = new Actions(driver);
+        //move to element instead of click
+        actions.moveToElement(driver.findElement(fleetBy)).perform();
+        //perform - to execute command
+        //every action should end with perform()
 
         BrowserUtils.wait(2);
 
