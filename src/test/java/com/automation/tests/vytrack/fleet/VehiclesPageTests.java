@@ -43,6 +43,7 @@ public class VehiclesPageTests {
         driver.findElement(usernameBy).sendKeys(username);
         driver.findElement(passwordBy).sendKeys(password, Keys.ENTER);
 
+        //put more wait here as well, if didn't click
         BrowserUtils.wait(5);
         //click on fleet
         driver.findElement(fleetBy).click();
@@ -51,7 +52,8 @@ public class VehiclesPageTests {
 
         //click on Vehicles
         driver.findElement(By.linkText("Vehicles")).click();
-
+        //put more wait time if you are getting Cars, Dashboard...
+        //this application is slooooow...
         BrowserUtils.wait(5);
 
         //find subtitle element
