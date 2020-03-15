@@ -76,6 +76,21 @@ public class VehiclesPageTests {
 
     }
 
+    /**
+     *
+     *     ################ TASK 5 minutes
+     *
+     *     Given user is on the vytrack landing page
+     *     When user logs on as a store manager
+     *     Then user navigates to Fleet --> Vehicles
+     *     And user verifies that page number is equals to "1"
+     */
+    @Test
+    public void verifyPageNumber(){
+
+    }
+
+
 
     @BeforeMethod
     public void setup() {
