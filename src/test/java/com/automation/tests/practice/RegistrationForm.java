@@ -1,9 +1,7 @@
 package com.automation.tests.practice;
 
 import com.automation.utilities.BrowserUtils;
-import com.sun.tools.javac.util.StringUtils;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.jsoup.helper.StringUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
