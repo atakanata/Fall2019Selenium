@@ -21,6 +21,10 @@ public class LoginPageTests {
     //https - data encrypted, no chance for hackers to retrieve info
     //http - data as a plain text, very easy to hack it
     private String URL = "https://qa2.vytrack.com/user/login";
+//    CREDENTIALS FOR store manager
+    private String username = "storemanager85";
+    private String password = "UserUser123";
+
     private By usernameBy = By.id("prependedInput");
     private By passwordBy = By.id("prependedInput2");
     // > in css selector means same thing as / in xpath - direct child
@@ -31,6 +35,7 @@ public class LoginPageTests {
         driver.findElement(usernameBy).sendKeys("invalidusername");
         driver.findElement(passwordBy).sendKeys("UserUser123", Keys.ENTER);
         BrowserUtils.wait(5);
+
         WebElement warningElement = driver.findElement(warningMessageBy);
         assertTrue(warningElement.isDisplayed());
 
