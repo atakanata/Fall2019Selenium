@@ -33,6 +33,10 @@ public class LoginPageTests {
         BrowserUtils.wait(5);
         WebElement warningElement = driver.findElement(warningMessageBy);
         assertTrue(warningElement.isDisplayed());
+
+        String expected = "Invalid user name or password.";
+        String actual = warningElement.getText();
+        assertEquals(actual, expected);
     }
 
 
