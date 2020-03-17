@@ -6,7 +6,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 public class CallsPageTests {
 
@@ -18,6 +20,8 @@ public class CallsPageTests {
     private String storeManagerUserName="storemanager85";
     private String storeManagerPassword="UserUser123";
     private By activitiesBy = By.xpath("//span[@class='title title-level-1' and contains(text(),'Activities')]");
+    private By logCallBtnBy = By.cssSelector("a[title='Log call']");
+
 
     @BeforeMethod
     public void setup(){
@@ -37,8 +41,21 @@ public class CallsPageTests {
         //hover over Activities
         actions.moveToElement(driver.findElement(activitiesBy)).perform();
 
+        BrowserUtils.wait(2);
 
+        driver.findElement(By.linkText("Calls")).click();
 
+        BrowserUtils.wait(5);
+    }
+
+    @Test
+    public void verifyLogCallButton(){
+
+    }
+
+    @AfterMethod
+    public void teardown(){
+        driver.quit();
     }
 
 
