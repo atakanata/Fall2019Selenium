@@ -32,6 +32,7 @@ public class CalendarEventsPageTests {
     private String storeManagerPassword="UserUser123";
     private By activitiesBy = By.xpath("//span[@class='title title-level-1' and contains(text(),'Activities')]");
     private By createCalendarEventBtnBy = By.cssSelector("a[title='Create Calendar event']");
+    private By currentUserBy = By.cssSelector("#user-menu > a");
 
     @BeforeMethod
     public void setup(){
@@ -63,6 +64,27 @@ public class CalendarEventsPageTests {
         WebElement createCalendarEventBtn = driver.findElement(createCalendarEventBtnBy);
         Assert.assertTrue(createCalendarEventBtn.isDisplayed());
     }
+
+    /**
+     * //in the @BeforeMethod
+     * Test Case: Default options
+     * Login as sales manager
+     * Go to Activities --> Calendar Events
+     *
+     *
+     * Click on Create Calendar Event
+     * Default owner name should be current user
+     * Default title should be blank
+     * Default start date should be current date
+     * Default start time should be current time
+     */
+    @Test(description = "Default options")
+    public void verifyDefaultValues(){
+        //Click on Create Calendar Event
+        driver.findElement(createCalendarEventBtnBy).click();
+        BrowserUtils.wait(3);
+    }
+
 
     @AfterMethod
     public void teardown(){
