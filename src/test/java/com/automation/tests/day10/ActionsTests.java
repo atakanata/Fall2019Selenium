@@ -40,12 +40,13 @@ public class ActionsTests {
                 pause(1000).
                 moveToElement(img3).
                 build().perform();
-
+        BrowserUtils.wait(3);
         //hover on the first image
         //verify that "name: user1" is displayed
-
+        //hover over image to make text visible
         actions.moveToElement(img1).perform();
         WebElement imgText1 = driver.findElement(By.xpath("//h5[text()='name: user1']"));
+        //verify that webelement that contains the text is visible
         Assert.assertTrue(imgText1.isDisplayed());
     }
 
