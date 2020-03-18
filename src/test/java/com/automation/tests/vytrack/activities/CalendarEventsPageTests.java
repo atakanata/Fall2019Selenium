@@ -95,7 +95,7 @@ public class CalendarEventsPageTests {
 
         //Default owner name should be current user
         String currentUserName = driver.findElement(currentUserBy).getText().trim();
-        String defaultOwnerName = driver.findElement(ownerBy).getText();
+        String defaultOwnerName = driver.findElement(ownerBy).getText().trim();
         Assert.assertEquals(currentUserName, defaultOwnerName);
 
 //        Default title should be blank
