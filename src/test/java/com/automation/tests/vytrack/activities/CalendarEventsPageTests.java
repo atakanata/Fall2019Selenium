@@ -82,7 +82,9 @@ public class CalendarEventsPageTests {
     public void verifyDefaultValues(){
         //Click on Create Calendar Event
         driver.findElement(createCalendarEventBtnBy).click();
-        BrowserUtils.wait(3);
+        BrowserUtils.wait(4);
+
+        String currentUserName = driver.findElement(currentUserBy).getText();
     }
 
 
