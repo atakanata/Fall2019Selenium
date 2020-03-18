@@ -90,6 +90,7 @@ public class CalendarEventsPageTests {
         //        Default title should be blank
         WebElement titleElement = driver.findElement(titleBy);
         Assert.assertTrue(titleElement.getAttribute("value").isEmpty());
+        //
 
         //date time syntax = https://www.journaldev.com/17899/java-simpledateformat-java-date-format
 
