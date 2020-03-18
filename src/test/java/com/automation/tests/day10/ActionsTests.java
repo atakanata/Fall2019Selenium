@@ -24,6 +24,7 @@ public class ActionsTests {
     @Test
     public void hoverOnImage() {
         driver.get("http://practice.cybertekschool.com/hovers");
+        driver.manage().window().maximize();
         BrowserUtils.wait(3);
 
         WebElement img1 = driver.findElement(By.xpath("(//img)[1]"));
