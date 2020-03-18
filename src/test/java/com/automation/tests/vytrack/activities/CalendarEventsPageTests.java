@@ -112,6 +112,7 @@ public class CalendarEventsPageTests {
         String expectedTime = LocalTime.now().format(DateTimeFormatter.ofPattern("h:m a"));
         String actualTime = driver.findElement(startTimeBy).getAttribute("value");
 
+        Assert.assertEquals(actualTime, expectedTime);
     }
 
 
