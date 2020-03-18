@@ -33,8 +33,10 @@ public class CalendarEventsPageTests {
     private By activitiesBy = By.xpath("//span[@class='title title-level-1' and contains(text(),'Activities')]");
     private By createCalendarEventBtnBy = By.cssSelector("a[title='Create Calendar event']");
     private By currentUserBy = By.cssSelector("#user-menu > a");
-    private By ownerBy = By.id("s2id_oro_calendar_event_form_calendar");
+    private By ownerBy = By.className("select2-chosen");
     private By titleBy = By.cssSelector("[name='oro_calendar_event_form[title]']");
+    private By startDateBy = By.cssSelector("[id*='date_selector_oro_calendar_event_form_start-uid']");
+    private By startTimeBy = By.cssSelector("[id*='time_selector_oro_calendar_event_form_start-uid']");
 
 
     @BeforeMethod
@@ -95,6 +97,7 @@ public class CalendarEventsPageTests {
 //        Default title should be blank
         WebElement titleElement = driver.findElement(titleBy);
         Assert.assertTrue(titleElement.getAttribute("value").isEmpty());
+        //Default start date should be current date
 
 
     }
