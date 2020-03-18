@@ -5,7 +5,9 @@ import com.automation.utilities.DriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -48,9 +50,17 @@ public class CallsPageTests {
         BrowserUtils.wait(5);
     }
 
+    /**
+     * Scenario: Verify for store manager
+     *
+     * Login as story manager
+     * Go to Activities --> Calls
+     * Verify that Log Call button is displayed
+     */
     @Test
     public void verifyLogCallButton(){
-
+        WebElement logCallBtnElement = driver.findElement(logCallBtnBy);
+        Assert.assertTrue(logCallBtnElement.isDisplayed());
     }
 
     @AfterMethod
