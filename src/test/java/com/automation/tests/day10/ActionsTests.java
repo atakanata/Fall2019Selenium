@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -39,6 +40,13 @@ public class ActionsTests {
                 pause(1000).
                 moveToElement(img3).
                 build().perform();
+
+        //hover on the first image
+        //verify that "name: user1" is displayed
+
+        actions.moveToElement(img1).perform();
+        WebElement imgText1 = driver.findElement(By.xpath("//h5[text()='name: user1']"));
+        Assert.assertTrue(imgText1.isDisplayed());
     }
 
     @AfterMethod
