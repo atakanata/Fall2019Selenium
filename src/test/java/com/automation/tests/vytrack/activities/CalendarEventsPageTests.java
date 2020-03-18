@@ -12,6 +12,10 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+
 /**
  * TASK until 8:14
  *
@@ -97,8 +101,16 @@ public class CalendarEventsPageTests {
 //        Default title should be blank
         WebElement titleElement = driver.findElement(titleBy);
         Assert.assertTrue(titleElement.getAttribute("value").isEmpty());
-        //Default start date should be current date
+        //date time syntax = https://www.journaldev.com/17899/java-simpledateformat-java-date-format
 
+        //Default start date should be current date
+        String expectedDate = LocalDate.now().format(DateTimeFormatter.ofPattern("MMM dd, yyyy"));
+        String actualDate = driver.findElement(startDateBy).getAttribute("value");
+
+        Assert.assertEquals(actualDate , expectedDate);
+
+        String expectedTime = LocalTime.now().format(DateTimeFormatter.ofPattern("h:m a"));
+        String actualTime = driver.findElement(startTimeBy).getAttribute("value");
 
     }
 
