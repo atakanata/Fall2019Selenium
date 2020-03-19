@@ -34,8 +34,11 @@ public class JSExecutor {
 //        you need to cast if reference type is a WebDriver
 //        JavascriptExecutor js = (JavascriptExecutor) driver;
         //scroll down 250 pixels
-//        x, y coordinates
-        driver.executeScript("window.scrollBy(0, 250)");
+//        x, y offset
+       for (int i=0; i < 10; i++){
+           driver.executeScript("window.scrollBy(0, 250)");
+           BrowserUtils.wait(1);
+       }
 
         BrowserUtils.wait(3);
     }
