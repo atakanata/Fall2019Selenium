@@ -65,6 +65,16 @@ public class ActionsTests {
         //hover on "enabled"
         //hover on "downloads"
         //click on PDF
+        WebElement enabled = driver.findElement(By.id("ui-id-3"));
+        WebElement downloads = driver.findElement(By.id("ui-id-4"));
+        WebElement pdf = driver.findElement(By.id("ui-id-5"));
+
+        actions.moveToElement(enabled).
+                pause(1000).
+                moveToElement(downloads).
+                pause(1000).
+                click(pdf).
+                build().perform();
     }
 
     @AfterMethod
