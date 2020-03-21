@@ -62,7 +62,7 @@ public class CalendarEventsPageTests {
         //hover over Activities
         actions.moveToElement(driver.findElement(activitiesBy)).perform();
 
-        BrowserUtils.wait(2);
+        BrowserUtils.wait(4);
         driver.findElement(By.linkText("Calendar Events")).click();
 
         BrowserUtils.wait(5);
