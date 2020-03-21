@@ -2,8 +2,10 @@ package com.automation.tests.day11;
 
 import com.automation.utilities.BrowserUtils;
 import com.automation.utilities.DriverFactory;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -33,6 +35,22 @@ public class JSExecutor2 {
         String actual = js.executeScript("return document.title").toString();
 
         Assert.assertEquals(actual, expected);
+    }
+
+
+    @Test
+    public void clickTest() {
+        WebElement link = driver.findElement(By.linkText("Multiple Buttons"));
+        link.click();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        //after "" you can list webelements that will be used
+        //as part of your javascript code
+        //it's varargs, so you can list 0+
+        //arguments - listed after ,
+        //use index to get specific webelement
+        // WebElement arguments = {element, link, link2};
+        //from left - to right
+        js.executeScript("arguments[0].click()", link);
     }
 
     @AfterMethod
