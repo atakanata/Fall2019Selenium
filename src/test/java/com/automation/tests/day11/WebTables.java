@@ -46,11 +46,21 @@ public class WebTables {
 
     @Test
     public void verifyRowCount() {
-        ////tbody//tr - to get all rows from table body, excluding table header
+        // //tbody//tr - to get all rows from table body, excluding table header
         List<WebElement> rows = driver.findElements(By.xpath("//table[1]//tbody//tr"));
         //if we will get a size of this collection, it automatically equals to number of elements
+        //expected - 4 rows in the table
         Assert.assertEquals(rows.size(), 4);
+    }
 
+    /**
+     * To get specific column, skip row index, and just provide td index
+     */
+    @Test
+    public void getSpecificColumn(){
+        //td[5] - column with links
+        List<WebElement> links = driver.findElements(By.xpath("//table[1]//tbody//tr//td[5]"));
+        System.out.println(BrowserUtils.getTextFromWebElements(links));
     }
 
 }
