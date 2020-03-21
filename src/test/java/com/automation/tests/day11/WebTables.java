@@ -9,6 +9,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class WebTables {
@@ -31,7 +32,9 @@ public class WebTables {
     @Test
     public void getColumnNames() {
         //th - represents table header cells
+        List<String> expected = Arrays.asList("Last Name", "First Name", "Email", "Due", "Web Site", "Action");
         List<WebElement> columnNames = driver.findElements(By.xpath("//table[1]//th"));
+
         for (WebElement columnName : columnNames) {
             System.out.println(columnName.getText());
         }
