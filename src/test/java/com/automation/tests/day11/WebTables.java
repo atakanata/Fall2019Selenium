@@ -108,8 +108,13 @@ public class WebTables {
 
         int index = 0;
         for (int i = 0; i < columnNames.size(); i++) {
-            if (columnNames.get(i).getText().equals(columnName)) {
+            String actualColumnName = columnNames.get(i).getText();
+
+            System.out.println(String.format("Column name: %s, position %s", actualColumnName, i));
+
+            if (actualColumnName.equals(columnName)) {
                 index = i + 1;
+                break;
             }
         }
 
