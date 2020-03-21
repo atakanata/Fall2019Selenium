@@ -67,17 +67,35 @@ public class WebTables {
      * To get specific column, skip row index, and just provide td index
      */
     @Test
-    public void getSpecificColumn(){
+    public void getSpecificColumn() {
         //td[5] - column with links
         List<WebElement> links = driver.findElements(By.xpath("//table[1]//tbody//tr//td[5]"));
         System.out.println(BrowserUtils.getTextFromWebElements(links));
     }
 
-    /** TASK until 4:45
+    /**
      * Go to tables example page
      * Delete record with jsmith@gmail.com email
      * verify that number of rows is equals to 3
      * verify that jsmith@gmail.com doesn't exists any more in the table
      */
+
+    @Test
+    public void deleteRowTest() {
+        String xpath = "//table[1]//td[text()='jsmith@gmail.com']/..//a[text()='delete']";
+        driver.findElement(By.xpath(xpath)).click();
+
+        BrowserUtils.wait(3);
+
+        //get count of rows
+        int rowCount = driver.findElements(By.xpath("//table[1]//tbody//tr")).size();
+
+        Assert.assertEquals(rowCount, 3);
+
+        List<WebElement> emails = driver.findElements(By.xpath("//table[1]//td[text()='jsmith@gmail.com']"));
+
+        Assert.assertTrue(emails.isEmpty());
+
+    }
 
 }
