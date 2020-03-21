@@ -66,6 +66,27 @@ public class JSExecutor2 {
         Assert.assertEquals(result.getText(), "Now it's gone!");
     }
 
+    @Test
+    public void textInputTest(){
+        //
+        driver.findElement(By.linkText("Form Authentication")).click();
+        BrowserUtils.wait(3);
+
+        WebElement username = driver.findElement(By.name("username"));
+        WebElement password = driver.findElement(By.name("password"));
+        WebElement loginbtn = driver.findElement(By.id("wooden_spoon"));
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        //to get text from input box - read attribute "value"
+        //to enter text - set attribute "value"
+
+        js.executeScript("arguments[0].setAttribute('value', 'tomsmith')" , username);
+        js.executeScript("arguments[0].setAttribute('value', 'SuperSecretPassword')", password);
+        js.executeScript("arguments[0].click()", loginbtn);
+    }
+
+
+
     @AfterMethod
     public void teardown(){
         BrowserUtils.wait(2);
