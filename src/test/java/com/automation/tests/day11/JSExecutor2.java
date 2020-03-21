@@ -41,7 +41,9 @@ public class JSExecutor2 {
     @Test
     public void clickTest() {
         WebElement link = driver.findElement(By.linkText("Multiple Buttons"));
-        link.click();
+//        disable this click action ,to perform it with js executor
+//        link.click();
+
         JavascriptExecutor js = (JavascriptExecutor) driver;
         //after "" you can list webelements that will be used
         //as part of your javascript code
