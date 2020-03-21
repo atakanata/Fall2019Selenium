@@ -16,14 +16,14 @@ public class JSExecutor2 {
     private WebDriver driver;
 
     @BeforeMethod
-    public void setup(){
+    public void setup() {
         driver = DriverFactory.createDriver("chrome");
         driver.get("http://practice.cybertekschool.com/");
         driver.manage().window().maximize();
     }
 
     @Test
-    public void verifyTitle(){
+    public void verifyTitle() {
         String expected = "Practice";
         //we create javascriptexecutor object by casting webdriver object
         JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -67,10 +67,10 @@ public class JSExecutor2 {
     }
 
     @Test
-    public void textInputTest(){
+    public void textInputTest() {
         //
         driver.findElement(By.linkText("Form Authentication")).click();
-        BrowserUtils.wait(3);
+        BrowserUtils.wait(5);
 
         WebElement username = driver.findElement(By.name("username"));
         WebElement password = driver.findElement(By.name("password"));
@@ -79,16 +79,27 @@ public class JSExecutor2 {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         //to get text from input box - read attribute "value"
         //to enter text - set attribute "value"
-
-        js.executeScript("arguments[0].setAttribute('value', 'tomsmith')" , username);
+        //.setAttribute('value', 'text') - enter some text
+        js.executeScript("arguments[0].setAttribute('value', 'tomsmith')", username);
         js.executeScript("arguments[0].setAttribute('value', 'SuperSecretPassword')", password);
         js.executeScript("arguments[0].click()", loginbtn);
+
+        BrowserUtils.wait(4);
+        String expected = "Welcome to the Secure Area. When you are done click logout below.";
+        String subheader = js.executeScript("return document.getElementsByClassName('subheader')[0].textContent").toString();
+
+
+        Assert.assertEquals(subheader, expected);
+    }
+
+    @Test
+    public void scrollToElement() {
+
     }
 
 
-
     @AfterMethod
-    public void teardown(){
+    public void teardown() {
         BrowserUtils.wait(2);
         driver.quit();
     }
