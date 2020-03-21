@@ -73,4 +73,11 @@ public class WebTables {
         System.out.println(BrowserUtils.getTextFromWebElements(links));
     }
 
+    /** TASK until 4:45
+     * Go to tables example page
+     * Delete record with jsmith@gmail.com email
+     * verify that number of rows is equals to 3
+     * verify that jsmith@gmail.com doesn't exists any more in the table
+     */
+
 }
