@@ -94,7 +94,14 @@ public class JSExecutor2 {
 
     @Test
     public void scrollToElement() {
+        BrowserUtils.wait(5);
 
+        //href = link, URL
+        WebElement link = driver.findElement(By.linkText("Cybertek School"));
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+
+        js.executeScript("arguments[0].scrollIntoView(true)", link);
     }
 
 
