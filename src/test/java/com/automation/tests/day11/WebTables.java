@@ -122,5 +122,19 @@ public class WebTables {
 
     }
 
+    @Test
+    public void getSpecificCell() {
+        String expected = "http://www.jdoe.com";
+
+        int row = 3;
+        int column = 5;
+
+        String xpath = "//table[1]//tbody//tr[" + row + "]//td[" + column + "]";
+        WebElement cell = driver.findElement(By.xpath(xpath));
+
+        Assert.assertEquals(cell.getText(), expected);
+
+    }
+
 
 }
