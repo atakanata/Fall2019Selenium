@@ -44,4 +44,13 @@ public class WebTables {
         Assert.assertEquals(BrowserUtils.getTextFromWebElements(columnNames), expected);
     }
 
+    @Test
+    public void verifyRowCount() {
+        ////tbody//tr - to get all rows from table body, excluding table header
+        List<WebElement> rows = driver.findElements(By.xpath("//table[1]//tbody//tr"));
+        //if we will get a size of this collection, it automatically equals to number of elements
+        Assert.assertEquals(rows.size(), 4);
+
+    }
+
 }
