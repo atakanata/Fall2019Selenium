@@ -26,16 +26,18 @@ public class FluentWaitTest {
         //10, TimeUnit.SECONDS = Duration.ofSeconds(10)
         Wait<WebDriver> wait = new FluentWait<>(driver).
                 withTimeout(Duration.ofSeconds(10)).
-                pollingEvery(Duration.ofSeconds(3)).
-                ignoring(NoSuchElementException.class);
+                pollingEvery(Duration.ofSeconds(5)).
+                ignoring(NoSuchElementException.class).
+                ignoring(ElementClickInterceptedException.class);
 
+        //Anonymous - class without name
+        WebElement submitBtn = wait.until(driver -> driver.findElement(By.xpath("//button[text()='Submit']")));
 
-        WebElement submitBtn = wait.until(new Function<WebDriver, WebElement>() {
-            @Override
-            public WebElement apply(WebDriver webDriver) {
-                return driver.findElement(By.xpath("//button[text()='Submit']"));
-            }
-        });
+        driver.findElement(By.name("username")).sendKeys("tomsmith");
+
+        driver.findElement(By.name("password")).sendKeys("SuperSecretPassword");
+
+        submitBtn.click();
     }
 
     @AfterMethod
