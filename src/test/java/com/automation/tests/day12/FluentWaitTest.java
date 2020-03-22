@@ -39,7 +39,6 @@ public class FluentWaitTest {
         WebElement submitBtn = wait.until(driver -> driver.findElement(By.xpath("//button[text()='Submit']")));
 
         driver.findElement(By.name("username")).sendKeys("tomsmith");
-
         driver.findElement(By.name("password")).sendKeys("SuperSecretPassword");
 
         submitBtn.click();
