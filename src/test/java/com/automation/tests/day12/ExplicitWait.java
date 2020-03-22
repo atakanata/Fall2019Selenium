@@ -64,12 +64,14 @@ public class ExplicitWait {
     public void elementToBeClickableTest(){
         driver.get("http://practice.cybertekschool.com/dynamic_loading/5");
 
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, 15);
 
         WebElement username = driver.findElement(By.name("username"));
         WebElement password = driver.findElement(By.name("password"));
         WebElement submitBtn = driver.findElement(By.cssSelector("button[type='submit']"));
 
+
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("loadingoverlay")));
         wait.until(ExpectedConditions.elementToBeClickable(submitBtn));
 
         username.sendKeys("tomsmith");
