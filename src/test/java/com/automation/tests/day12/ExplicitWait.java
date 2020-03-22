@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -14,12 +15,12 @@ public class ExplicitWait {
     private WebDriver driver;
 
     @BeforeMethod
-    public void setup(){
+    public void setup() {
         driver = DriverFactory.createDriver("chrome");
     }
 
     @Test
-    public void waitForTitle(){
+    public void waitForTitle() {
         driver.get("https://google.com");
 
         WebDriverWait wait = new WebDriverWait(driver, 10);
@@ -33,7 +34,7 @@ public class ExplicitWait {
     }
 
     @Test
-    public void waitForVisibility(){
+    public void waitForVisibility() {
         driver.get("http://practice.cybertekschool.com/dynamic_loading/1");
 
         WebDriverWait wait = new WebDriverWait(driver, 10);
@@ -50,12 +51,17 @@ public class ExplicitWait {
         wait.until(ExpectedConditions.visibilityOf(submitBtn));
         wait.until(ExpectedConditions.elementToBeClickable(submitBtn)).click();
 
+        String expected = "Welcome to the Secure Area. When you are done click logout below.";
+        String actual = driver.findElement(By.className("subheader")).getText();
+
+        Assert.assertEquals(actual, expected);
+
 
     }
 
 
     @AfterMethod
-    public void teardown(){
+    public void teardown() {
         driver.quit();
     }
 }
