@@ -15,6 +15,6 @@ public class WebOrders {
         driver = DriverFactory.createDriver("chrome");
         driver.get("http://secure.smartbearsoftware.com/samples/testcomplete12/weborders");
         driver.findElement(By.id("ctl00_MainContent_username")).sendKeys("Tester");
-        driver.findElement(By.xpath("ctl00_MainContent_password")).sendKeys("test", Keys.ENTER);
+        driver.findElement(By.id("ctl00_MainContent_password")).sendKeys("test", Keys.ENTER);
     }
 }
