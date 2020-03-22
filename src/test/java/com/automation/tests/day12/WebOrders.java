@@ -1,5 +1,6 @@
 package com.automation.tests.day12;
 
+import com.automation.utilities.BrowserUtils;
 import com.automation.utilities.DriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -36,10 +37,23 @@ public class WebOrders {
     @Test
     public void checkBoxTest() {
         driver.findElement(By.id("ctl00_MainContent_btnCheckAll")).click();
+        BrowserUtils.wait(2);
         List<WebElement> checkboxes = driver.findElements(By.cssSelector("input[type='checkbox']"));
         for (WebElement checkbox : checkboxes) {
             Assert.assertTrue(checkbox.isSelected());
         }
+    }
+
+    /**
+     * :: TASK for 10 minutes ::
+     * Go to web orders page
+     * Verify that Steve Johns zip code is 21233
+     * Then update his zip code to 20002
+     * Then verify that Steve Johns zip code is 20002
+     */
+    @Test
+    public void updateZipCode(){
+
     }
 
     @AfterMethod
