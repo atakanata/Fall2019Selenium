@@ -54,11 +54,27 @@ public class WebOrders {
      */
     @Test
     public void updateZipCode(){
+        WebElement zipcode = driver.findElement(By.xpath("//td[text()='Steve Johns']//following-sibling::td[7]"));
+        Assert.assertEquals(zipcode.getText(), "21233");
 
+        //click on update image
+
+        driver.findElement(By.xpath(" //td[text()='Steve Johns']//following-sibling::td/input")).click();
+
+        WebElement zipcodeInput = driver.findElement(By.id("ctl00_MainContent_fmwOrder_TextBox5"));
+
+        zipcodeInput.clear();
+        zipcodeInput.sendKeys("20002");
+
+        driver.findElement(By.id("ctl00_MainContent_fmwOrder_UpdateButton")).click();
+
+        zipcode = driver.findElement(By.xpath("//td[text()='Steve Johns']//following-sibling::td[7]"));
+        Assert.assertEquals(zipcode.getText(), "20002");
     }
 
     @AfterMethod
     public void teardown() {
+        BrowserUtils.wait(2);
         driver.quit();
     }
 }
