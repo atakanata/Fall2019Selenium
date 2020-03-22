@@ -1,9 +1,14 @@
 package com.automation.utilities;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class BrowserUtils {
 
@@ -26,5 +31,14 @@ public class BrowserUtils {
             textValues.add(element.getText());
         }
         return textValues;
+    }
+    public static void setupGiveMeUrl(WebDriver driver, String url){
+        WebDriverManager.chromedriver().version("79").setup();
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.setHeadless(true);
+        driver = new ChromeDriver(chromeOptions);
+        driver.get(url);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().window().maximize();
     }
 }
