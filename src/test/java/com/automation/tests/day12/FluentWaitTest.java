@@ -2,8 +2,10 @@ package com.automation.tests.day12;
 
 import com.automation.utilities.DriverFactory;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -29,6 +31,9 @@ public class FluentWaitTest {
                 pollingEvery(Duration.ofSeconds(5)).
                 ignoring(NoSuchElementException.class).
                 ignoring(ElementClickInterceptedException.class);
+
+        WebDriverWait  webDriverWait = new WebDriverWait(driver, 15);
+        webDriverWait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("loadingoverlay")));
 
         //Anonymous - class without name
         WebElement submitBtn = wait.until(driver -> driver.findElement(By.xpath("//button[text()='Submit']")));
