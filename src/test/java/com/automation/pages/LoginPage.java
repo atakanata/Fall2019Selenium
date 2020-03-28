@@ -12,17 +12,17 @@ import org.openqa.selenium.support.PageFactory;
 public class LoginPage {
 
     @FindBy(id = "prependedInput")
-    public WebElement username;
+    private WebElement username;
 //    public WebElement username2 = Driver.getDriver().findElement(By.id("prependedInput"));
 
     @FindBy(id = "prependedInput2")
-    public WebElement password;
+    private WebElement password;
 
     @FindBy(id = "_submit")
-    public WebElement login;
+    private WebElement login;
 
     @FindBy(linkText = "Forgot your password?")
-    public WebElement forgotPassword;
+    private WebElement forgotPassword;
 
     public LoginPage() {
         //to connect our webdriver, page class and page factory
