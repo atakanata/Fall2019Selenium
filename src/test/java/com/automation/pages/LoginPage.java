@@ -16,6 +16,9 @@ public class LoginPage {
     @FindBy(id = "_submit")
     public WebElement login;
 
+    @FindBy(linkText = "Forgot your password?")
+    public WebElement forgotPassword;
+
     public LoginPage() {
         //to connect our webdriver, page class and page factory
         //PageFactory - used to use @FindBy annotations
