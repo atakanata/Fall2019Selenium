@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 public class NewLoginTests extends TestBase {
     /**
      * Login and verify that page title is a "Dashboard"
-     * 5 minutes
+     * 10 minutes : 1:37
      */
     @Test
     public void verifyPageTitle(){
