@@ -42,5 +42,8 @@ public abstract class AbstractPageBase {
                 pause(2000).
                 click(moduleElement).
                 build().perform();
+
+        //increase this wait rime if still failing
+        BrowserUtils.wait(4);
     }
 }
