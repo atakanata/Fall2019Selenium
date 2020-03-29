@@ -33,4 +33,13 @@ public class NewCalendarEventsTests extends AbstractTestBase {
         Assert.assertEquals(actualStartDate, expectedStartDate);
 
     }
+
+    /**
+     * 15 minutes until 3:45
+     * Test Case: Time difference
+     * Login as sales manager
+     * Go to Activities --> Calendar Events
+     * Click on Create Calendar Event
+     * Verify that difference between start and end time is 1 hour
+     **/
 }
