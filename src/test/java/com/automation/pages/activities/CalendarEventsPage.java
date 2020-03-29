@@ -48,7 +48,9 @@ public class CalendarEventsPage extends AbstractPageBase {
 
     public void clickToCreateCalendarEvent() {
         BrowserUtils.waitForPageToLoad(20);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("[title='Create Calendar event']")));
         wait.until(ExpectedConditions.elementToBeClickable(createCalendarEvent)).click();
+        BrowserUtils.waitForPageToLoad(20);
     }
 
     public String getStartDate() {
