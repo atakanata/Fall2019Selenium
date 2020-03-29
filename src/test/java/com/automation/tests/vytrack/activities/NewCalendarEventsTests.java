@@ -46,6 +46,7 @@ public class NewCalendarEventsTests extends AbstractTestBase {
     @Test
     public void timeDifferenceTest(){
         loginPage.login();
+
         calendarEventsPage.navigateTo("Activities", "Calendar Events");
 
         calendarEventsPage.clickToCreateCalendarEvent();
