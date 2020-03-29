@@ -16,6 +16,7 @@ public class CalendarEventsPage extends AbstractPageBase {
     @FindBy(className = "select2-chosen")
     private WebElement owner;
 
+    @FindBy(css = "[id^='date_selector_oro_calendar_event_form_start']")
     private WebElement startDate;
 
 
@@ -30,5 +31,11 @@ public class CalendarEventsPage extends AbstractPageBase {
     public void clickToCreateCalendarEvent(){
         BrowserUtils.waitForPageToLoad(10);
         wait.until(ExpectedConditions.elementToBeClickable(createCalendarEvent)).click();
+    }
+
+    public String getStartDate(){
+        BrowserUtils.waitForPageToLoad(10);
+        wait.until(ExpectedConditions.visibilityOf(startDate));
+        return startDate.getAttribute("value");
     }
 }
