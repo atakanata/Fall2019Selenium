@@ -31,7 +31,9 @@ public class BrowserUtils {
         List<String> textValues = new ArrayList<>();
         for (WebElement element:elements
              ) {
-            textValues.add(element.getText());
+            if (!element.getText().isEmpty()) {
+                textValues.add(element.getText());
+            }
         }
         return textValues;
     }
@@ -58,5 +60,23 @@ public class BrowserUtils {
         } catch (Throwable error) {
             error.printStackTrace();
         }
+    }
+    /**
+     * Clicks on an element using JavaScript
+     *
+     * @param element
+     */
+    public static void clickWithJS(WebElement element) {
+        ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
+        ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].click();", element);
+    }
+
+    /**
+     * Scroll to element using JavaScript
+     *
+     * @param element
+     */
+    public static void scrollTo(WebElement element) {
+        ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
     }
 }
