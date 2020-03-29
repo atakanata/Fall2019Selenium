@@ -27,11 +27,13 @@ public class CalendarEventsPage extends AbstractPageBase {
 
     public String getStartTime() {
         BrowserUtils.waitForPageToLoad(20);
+        wait.until(ExpectedConditions.visibilityOf(startTime));
         return startTime.getAttribute("value");
     }
 
     public String getEndTime() {
         BrowserUtils.waitForPageToLoad(20);
+        wait.until(ExpectedConditions.visibilityOf(endTime));
         return endTime.getAttribute("value");
     }
 

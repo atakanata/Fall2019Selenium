@@ -35,7 +35,7 @@ public class NewCalendarEventsTests extends AbstractTestBase {
     }
 
     /**
-     * 15 minutes until 3:45
+     * 35 minutes until 4:05
      * Test Case: Time difference
      * Login as sales manager
      * Go to Activities --> Calendar Events
@@ -47,6 +47,7 @@ public class NewCalendarEventsTests extends AbstractTestBase {
     public void timeDifferenceTest(){
         loginPage.login();
         calendarEventsPage.navigateTo("Activities", "Calendar Events");
+
         calendarEventsPage.clickToCreateCalendarEvent();
 
         String startTime = calendarEventsPage.getStartTime(); //get start time
