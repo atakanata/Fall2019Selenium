@@ -21,7 +21,7 @@ public class CalendarEventsPage extends AbstractPageBase {
 
 
     public String getOwnerName(){
-        BrowserUtils.waitForPageToLoad(10);
+        BrowserUtils.waitForPageToLoad(15);
         //wait for element to be present in DOM
         wait.until(ExpectedConditions.presenceOfElementLocated(By.className("select2-chosen")));
         wait.until(ExpectedConditions.visibilityOf(owner));
@@ -29,12 +29,12 @@ public class CalendarEventsPage extends AbstractPageBase {
     }
 
     public void clickToCreateCalendarEvent(){
-        BrowserUtils.waitForPageToLoad(10);
+        BrowserUtils.waitForPageToLoad(15);
         wait.until(ExpectedConditions.elementToBeClickable(createCalendarEvent)).click();
     }
 
     public String getStartDate(){
-        BrowserUtils.waitForPageToLoad(10);
+        BrowserUtils.waitForPageToLoad(15);
         wait.until(ExpectedConditions.visibilityOf(startDate));
         return startDate.getAttribute("value");
     }
