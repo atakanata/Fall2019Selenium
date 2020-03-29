@@ -18,7 +18,7 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
 /**
- * TASK until 8:14
+ *
  *
  * Scenario: Verify for store manager
  *
