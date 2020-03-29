@@ -1,6 +1,7 @@
 package com.automation.utilities;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 public class DateTimeUtilities {
@@ -23,5 +24,19 @@ public class DateTimeUtilities {
      */
     public static String getCurrentDate(String format){
         return LocalDate.now().format(DateTimeFormatter.ofPattern(format));
+    }
+
+    /**
+     * This method returns difference between end and start time
+     * @param start
+     * @param end
+     * @param format
+     * @return
+     */
+    public int getTimeDifference(String start, String end, String format){
+        LocalTime startTime = LocalTime.parse(start, DateTimeFormatter.ofPattern(format));
+        LocalTime endTime = LocalTime.parse(end, DateTimeFormatter.ofPattern(format));
+
+        return 0;
     }
 }
