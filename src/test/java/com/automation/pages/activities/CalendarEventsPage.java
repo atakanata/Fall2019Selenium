@@ -16,6 +16,8 @@ public class CalendarEventsPage extends AbstractPageBase {
     @FindBy(className = "select2-chosen")
     private WebElement owner;
 
+    private WebElement startDate;
+
 
     public String getOwnerName(){
         BrowserUtils.waitForPageToLoad(10);

@@ -23,5 +23,6 @@ public class NewCalendarEventsTests extends AbstractTestBase {
         calendarEventsPage.navigateTo("Activities", "Calendar Events");
         calendarEventsPage.clickToCreateCalendarEvent();
         Assert.assertEquals(calendarEventsPage.getOwnerName(), calendarEventsPage.getCurrentUserName());
+
     }
 }
