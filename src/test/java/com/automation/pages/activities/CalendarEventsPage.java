@@ -36,6 +36,7 @@ public class CalendarEventsPage extends AbstractPageBase {
     public String getStartDate(){
         BrowserUtils.waitForPageToLoad(15);
         wait.until(ExpectedConditions.visibilityOf(startDate));
+        BrowserUtils.scrollTo(startDate);
         return startDate.getAttribute("value");
     }
 }
