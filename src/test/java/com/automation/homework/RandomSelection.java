@@ -26,15 +26,18 @@ public class RandomSelection {
 
         List<WebElement> checkboxes = driver.findElements(By.cssSelector("input[type='checkbox']"));
         List<WebElement> labels = driver.findElements(By.xpath("//input[@type='checkbox']/following-sibling::label"));
+
         int counter = 0;
 
         while (counter < 3) {
             Random random = new Random();
+            //gives you a number from 0 to bound (exclusive)
             int checkboxToSelect = random.nextInt(checkboxes.size());
 
             if (checkboxes.get(checkboxToSelect).isEnabled()) {
 
                 checkboxes.get(checkboxToSelect).click();
+
                 System.out.println("Selected :: " + labels.get(checkboxToSelect).getText());
 
                 checkboxes.get(checkboxToSelect).click();
