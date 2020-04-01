@@ -63,6 +63,13 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>com.aventstack</groupId>
+            <artifactId>extentreports</artifactId>
+            <version>4.0.4</version>
+        </dependency>
+
+
 
     </dependencies>
 
