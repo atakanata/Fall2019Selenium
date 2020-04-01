@@ -67,8 +67,9 @@ public abstract class AbstractTestBase {
         if (iTestResult.getStatus() == ITestResult.FAILURE) {
             //screenshot will have a name of the test
             String screenshotPath = BrowserUtils.getScreenshot(iTestResult.getName());
-            test.addScreenCaptureFromPath(screenshotPath);//attach screenshot
             test.fail(iTestResult.getName());//attach test name that failed
+            BrowserUtils.wait(2);
+            test.addScreenCaptureFromPath(screenshotPath, "Failed");//attach screenshot
             test.fail(iTestResult.getThrowable());//attach console output
         }
         Driver.closeDriver();
