@@ -1,12 +1,13 @@
 package com.automation.tests.vytrack;
 
-
 import com.automation.utilities.BrowserUtils;
 import com.automation.utilities.ConfigurationReader;
 import com.automation.utilities.Driver;
+
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -31,24 +32,26 @@ public abstract class AbstractTestBase {
     public void setupTest() {
         report = new ExtentReports();
         String reportPath = "";
+        //location of report file
         if (System.getProperty("os.name").toLowerCase().contains("win")) {
             reportPath = System.getProperty("user.dir") + "\\test-output\\report.html";
         } else {
             reportPath = System.getProperty("user.dir") + "/test-output/report.html";
         }
+        //is a HTML report itself
         htmlReporter = new ExtentHtmlReporter(reportPath);
+        //add it to the reporter
         report.attachReporter(htmlReporter);
-        report.attachReporter(htmlReporter);
-        htmlReporter.config().setReportName("Vytrack Test Automation Results");
+        htmlReporter.config().setReportName("VYTRACK Test Automation Results");
     }
 
     @AfterTest
-    public void afterTest(){
-        report.flush();
+    public void afterTest() {
+        report.flush();//to release a report
     }
 
     @BeforeMethod
-    public void setup(){
+    public void setup() {
         String URL = ConfigurationReader.getProperty("qa1");
         Driver.getDriver().get(URL);
         Driver.getDriver().manage().window().maximize();
@@ -59,13 +62,18 @@ public abstract class AbstractTestBase {
 
     @AfterMethod
     public void teardown(ITestResult iTestResult) throws IOException {
-        //Take a screenshot if test fails
-        if (iTestResult.getStatus()==ITestResult.FAILURE){
+        //ITestResult class describes the result of a test.
+        //if test failed, take a screenshot
+        //no failure - no screenshot
+        if (iTestResult.getStatus() == ITestResult.FAILURE) {
+            //screenshot will have a name of the test
             String screenshotPath = BrowserUtils.getScreenshot(iTestResult.getName());
-            test.fail(iTestResult.getName()); //failed test name
-            test.addScreenCaptureFromPath(screenshotPath); // attached screenshot
-            test.fail(iTestResult.getThrowable()); //concole output
+            test.fail(iTestResult.getName());//attach test name that failed
+            BrowserUtils.wait(2);
+            test.addScreenCaptureFromPath(screenshotPath, "Failed");//attach screenshot
+            test.fail(iTestResult.getThrowable());//attach console output
         }
+        BrowserUtils.wait(2);
         Driver.closeDriver();
     }
 }

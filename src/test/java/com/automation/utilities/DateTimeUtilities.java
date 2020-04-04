@@ -27,9 +27,16 @@ public class DateTimeUtilities {
         return LocalDate.now().format(DateTimeFormatter.ofPattern(format));
     }
 
+    /**
+     * This method returns difference between end and start time
+     * @param start time
+     * @param end time
+     * @param format like h:m a --> 5:15 AM, 8:07 PM
+     * @return difference between end time and start time as a long
+     */
     public static long getTimeDifference(String start, String end, String format){
-        LocalTime startTime = LocalTime.parse(start,DateTimeFormatter.ofPattern(format));
-        LocalTime endTime = LocalTime.parse(end,DateTimeFormatter.ofPattern(format));
-        return ChronoUnit.HOURS.between(startTime,endTime);
+        LocalTime startTime = LocalTime.parse(start, DateTimeFormatter.ofPattern(format));
+        LocalTime endTime = LocalTime.parse(end, DateTimeFormatter.ofPattern(format));
+        return ChronoUnit.HOURS.between(startTime, endTime);
     }
 }

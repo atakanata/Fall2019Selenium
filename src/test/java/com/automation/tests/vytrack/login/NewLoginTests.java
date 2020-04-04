@@ -2,7 +2,6 @@ package com.automation.tests.vytrack.login;
 
 import com.automation.pages.LoginPage;
 import com.automation.tests.vytrack.AbstractTestBase;
-import com.automation.tests.vytrack.TestBase;
 import com.automation.utilities.BrowserUtils;
 import com.automation.utilities.Driver;
 import org.testng.Assert;
@@ -13,38 +12,51 @@ public class NewLoginTests extends AbstractTestBase {
 
 
     @Test
-    public void verifyPageTitle(){
+    public void verifyPageTitle() {
+        //test --> ExtentTest object
+        //we must add to every test at the beginning
+        //test = report.createTest("Test name");
         test = report.createTest("Verify page title");
+
         LoginPage loginPage = new LoginPage();
         loginPage.login();
-        test.info("Login as store manager");
-        Assert.assertEquals(Driver.getDriver().getTitle(), "Dashboard");
-        //BrowserUtils.getScreenshot("Dashboard_Verification");
+        //like system.out, but it goes to report as well
+        test.info("Login as store manager");//log some steps
+        Assert.assertEquals(Driver.getDriver().getTitle(), "Dashboards");
+        //if assertion passed, it will set test status in report to passed
+
+
         test.pass("Page title Dashboard was verified");
     }
 
+    /**
+     * Enter wrong credentials and verify warning message
+     */
+
     @Test
-    public void verifyWarningMessage(){
-        test = report.createTest("Verify Warning Message");
+    public void verifyWarningMessage() {
+        test = report.createTest("Verify warning message");
+
         LoginPage loginPage = new LoginPage();
         loginPage.login("wrong", "wrong");
         Assert.assertEquals(loginPage.getWarningMessageText(), "Invalid user name or password.");
-        //BrowserUtils.getScreenshot("loginPage");
-        test.pass("Warning message was verified.");
+        //take a screenshot
+        BrowserUtils.getScreenshot("warning_message");
+
+        test.pass("Warning message is displayed");
     }
 
     @Test(dataProvider = "credentials")
     public void loginWithDDT(String userName, String password) {
-        test = report.createTest("Verify page title");
+        test = report.createTest("Verify page title as " + userName);
         LoginPage loginPage = new LoginPage();
         loginPage.login(userName, password);
         test.info("Login as " + userName);//log some steps
+        BrowserUtils.wait(2);
         Assert.assertEquals(Driver.getDriver().getTitle(), "Dashboard");
         test.pass("Page title Dashboard was verified");
     }
-    //Object[][] or Object[] or Iterator<Object[]>
-//Object[] - 1 column with a data
-//Object[][] 2+
+
     @DataProvider
     public Object[][] credentials() {
         return new Object[][]{
@@ -53,4 +65,8 @@ public class NewLoginTests extends AbstractTestBase {
                 {"user16", "UserUser123"}
         };
     }
+
+    //Object[][] or Object[] or Iterator<Object[]>
+    //Object[] - 1 column with a data
+    //Object[][] 2+
 }
