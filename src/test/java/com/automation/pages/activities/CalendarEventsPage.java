@@ -30,6 +30,24 @@ public class CalendarEventsPage extends AbstractPageBase {
     @FindBy(className = "grid-header-cell__label")
     private List<WebElement> columnNames;
 
+    @FindBy(css = "iframe[id^='oro_calendar_event_form_description-uid']")
+    private WebElement descriptionFrame;
+
+    @FindBy(css = "[id^='oro_calendar_event_form_title-uid']")
+    private WebElement title;
+
+    @FindBy(id = "tinymce")
+    private WebElement descriptionTextArea;
+
+    @FindBy(css = "[class='btn-group pull-right'] > button")
+    private WebElement saveAndClose;
+
+    @FindBy(xpath = "(//div[@class='control-label'])[1]")
+    private WebElement generalInfoTitle;
+
+    @FindBy(xpath = "//label[text()='Description']/following-sibling::div//p[1]")
+    private WebElement generalInfoDescription;
+
     public List<String> getColumnNames(){
         BrowserUtils.waitForPageToLoad(20);
         return BrowserUtils.getTextFromWebElements(columnNames);

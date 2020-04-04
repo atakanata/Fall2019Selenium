@@ -48,7 +48,7 @@ public class NewLoginTests extends AbstractTestBase {
 
     @Test(dataProvider = "credentials")
     public void loginWithDDT(String userName, String password) {
-        test = report.createTest("Verify page title");
+        test = report.createTest("Verify page title as " + userName);
         LoginPage loginPage = new LoginPage();
         loginPage.login(userName, password);
         test.info("Login as " + userName);//log some steps
