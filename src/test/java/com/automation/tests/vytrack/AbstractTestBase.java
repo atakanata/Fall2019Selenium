@@ -31,16 +31,16 @@ public abstract class AbstractTestBase {
     @Parameters("reportName")
     public void setupTest(@Optional String reportName) {
         System.out.println("Report name: " + reportName);
-        String reportNameString = reportName == null ? "report.html" : reportName;
+        reportName = reportName == null ? "report.html" : reportName+".html";
 
         report = new ExtentReports();
 
         String reportPath = "";
         //location of report file
         if (System.getProperty("os.name").toLowerCase().contains("win")) {
-            reportPath = System.getProperty("user.dir") + "\\test-output\\report.html";
+            reportPath = System.getProperty("user.dir") + "\\test-output\\" + reportName;
         } else {
-            reportPath = System.getProperty("user.dir") + "/test-output/report.html";
+            reportPath = System.getProperty("user.dir") + "/test-output/" + reportName;
         }
         //is a HTML report itself
         htmlReporter = new ExtentHtmlReporter(reportPath);
