@@ -52,7 +52,8 @@ public class NewLoginTests extends AbstractTestBase {
         LoginPage loginPage = new LoginPage();
         loginPage.login(userName, password);
         test.info("Login as " + userName);//log some steps
-        Assert.assertEquals(Driver.getDriver().getTitle(), "Dashboards");
+        BrowserUtils.wait(2);
+        Assert.assertEquals(Driver.getDriver().getTitle(), "Dashboard");
         test.pass("Page title Dashboard was verified");
     }
 
@@ -61,7 +62,7 @@ public class NewLoginTests extends AbstractTestBase {
         return new Object[][]{
                 {"storemanager85", "UserUser123"},
                 {"salesmanager110", "UserUser123"},
-                {"user16", "UserUser123"},
+                {"user16", "UserUser123"}
         };
     }
 
