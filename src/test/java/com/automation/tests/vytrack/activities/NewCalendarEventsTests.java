@@ -6,6 +6,7 @@ import com.automation.tests.vytrack.AbstractTestBase;
 import com.automation.utilities.BrowserUtils;
 import com.automation.utilities.DateTimeUtilities;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
@@ -47,7 +48,7 @@ public class NewCalendarEventsTests extends AbstractTestBase {
      **/
 
     @Test
-    public void timeDifferenceTest(){
+    public void timeDifferenceTest() {
         loginPage.login();
 
         calendarEventsPage.navigateTo("Activities", "Calendar Events");
@@ -79,7 +80,7 @@ public class NewCalendarEventsTests extends AbstractTestBase {
      */
 
     @Test
-    public void verifyColumnNamesTest(){
+    public void verifyColumnNamesTest() {
         loginPage.login();
         calendarEventsPage.navigateTo("Activities", "Calendar Events");
 
@@ -89,4 +90,30 @@ public class NewCalendarEventsTests extends AbstractTestBase {
     }
 
 //    public Object[] eve
+
+    @Test(dataProvider = "calendarEvents")
+    public void createCalendarEventTest(String title, String description) {
+        //only for extent report. To create a test in html report
+        test = report.createTest("Create calendar event");
+        loginPage.login();
+        calendarEventsPage.navigateTo("Activities", "Calendar Events");
+        calendarEventsPage.clickToCreateCalendarEvent();
+        calendarEventsPage.enterCalendarEventTitle(title);
+        calendarEventsPage.enterCalendarEventDescription(description);
+        calendarEventsPage.clickOnSaveAndClose();
+
+        //verify that calendar event info is correct
+        Assert.assertEquals(calendarEventsPage.getGeneralInfoDescriptionText(), description);
+        Assert.assertEquals(calendarEventsPage.getGeneralInfoTitleText(), title);
+
+        //for extent report. specify that test passed in report (if all assertions passed)
+        test.pass("Calendar event was created successfully!");
+    }
+
+    @DataProvider
+    public Object[][] calendarEvents() {
+        return new Object[][]{
+                {"Daily stand-up", "Scrum meeting to provide updates"}
+        };
+    }
 }
