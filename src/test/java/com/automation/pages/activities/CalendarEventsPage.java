@@ -71,6 +71,7 @@ public class CalendarEventsPage extends AbstractPageBase {
 
     public String getGeneralInfoDescriptionText() {
         BrowserUtils.waitForPageToLoad(20);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//label[text()='Description']/following-sibling::div//div")));
         return generalInfoDescription.getText();
     }
 //#############################################################
