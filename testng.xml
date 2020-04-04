@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Test suite">
+    <test name="Login">
+        <classes>
+            <class name="com.automation.tests.vytrack.login.NewLoginTests"/>
+        </classes>
+    </test>
+    <test name="Calendar Events">
+        <classes>
+            <class name="com.automation.tests.vytrack.activities.NewCalendarEventsTests"/>
+        </classes>
+    </test>
+</suite>
