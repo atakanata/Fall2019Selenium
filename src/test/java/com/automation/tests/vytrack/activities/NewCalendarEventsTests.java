@@ -93,8 +93,15 @@ public class NewCalendarEventsTests extends AbstractTestBase {
 
     @Test(dataProvider = "calendarEvents")
     public void createCalendarEventTest(String title, String description) {
+        //if you have more one test, and 1st pass but others failing,
+        //you are getting session id is null exception
+        //because driver object was not initialized in time
+        //just create page objects inside a test
+        LoginPage loginPage = new LoginPage();
+        CalendarEventsPage calendarEventsPage = new CalendarEventsPage();
+
         //only for extent report. To create a test in html report
-        test = report.createTest("Create calendar event");
+        test = report.createTest("Create calendar event for " + title);
         loginPage.login();
         calendarEventsPage.navigateTo("Activities", "Calendar Events");
         calendarEventsPage.clickToCreateCalendarEvent();
@@ -113,7 +120,9 @@ public class NewCalendarEventsTests extends AbstractTestBase {
     @DataProvider
     public Object[][] calendarEvents() {
         return new Object[][]{
-                {"Daily stand-up", "Scrum meeting to provide updates"}
+                {"Daily stand-up", "Scrum meeting to provide updates"},
+                {"Sprint Review", "Scrum meeting where team discussing previous sprint"},
+                {"Sprint Planning", "Scrum meeting where team discussing backlog for following sprint"}
         };
     }
 }
