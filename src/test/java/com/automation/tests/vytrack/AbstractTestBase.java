@@ -26,7 +26,9 @@ public abstract class AbstractTestBase {
     protected ExtentTest test;
 
     @BeforeTest
-    public void setupTest() {
+    @Parameters("reportName")
+    public void setupTest(@Optional String reportName) {
+        System.out.println("Report name: "+reportName);
         report = new ExtentReports();
         String reportPath = "";
         //location of report file
