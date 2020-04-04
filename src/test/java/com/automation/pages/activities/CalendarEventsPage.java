@@ -45,7 +45,7 @@ public class CalendarEventsPage extends AbstractPageBase {
     @FindBy(xpath = "(//div[@class='control-label'])[1]")
     private WebElement generalInfoTitle;
 
-    @FindBy(xpath = "//label[text()='Description']/following-sibling::div//p[1]")
+    @FindBy(xpath = "//label[text()='Description']/following-sibling::div//div")
     private WebElement generalInfoDescription;
 
     public void enterCalendarEventTitle(String titleValue) {
@@ -71,8 +71,10 @@ public class CalendarEventsPage extends AbstractPageBase {
 
     public String getGeneralInfoDescriptionText() {
         BrowserUtils.waitForPageToLoad(20);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//label[text()='Description']/following-sibling::div//div")));
         return generalInfoDescription.getText();
     }
+
 //#############################################################
     public List<String> getColumnNames() {
         BrowserUtils.waitForPageToLoad(20);
