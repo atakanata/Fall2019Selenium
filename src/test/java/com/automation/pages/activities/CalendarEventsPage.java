@@ -48,7 +48,33 @@ public class CalendarEventsPage extends AbstractPageBase {
     @FindBy(xpath = "//label[text()='Description']/following-sibling::div//p[1]")
     private WebElement generalInfoDescription;
 
-    public List<String> getColumnNames(){
+    public void enterCalendarEventTitle(String titleValue) {
+        BrowserUtils.waitForPageToLoad(20);
+        wait.until(ExpectedConditions.visibilityOf(title)).sendKeys(titleValue);
+    }
+
+    public void enterCalendarEventDescription(String description) {
+        //wait until frame is available and switch to it
+        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(descriptionFrame));
+        descriptionTextArea.sendKeys(description);
+        driver.switchTo().defaultContent();//exit from the frame
+    }
+
+    public void clickOnSaveAndClose() {
+        wait.until(ExpectedConditions.elementToBeClickable(saveAndClose)).click();
+    }
+
+    public String getGeneralInfoTitleText() {
+        BrowserUtils.waitForPageToLoad(20);
+        return generalInfoTitle.getText();
+    }
+
+    public String getGeneralInfoDescriptionText() {
+        BrowserUtils.waitForPageToLoad(20);
+        return generalInfoDescription.getText();
+    }
+//#############################################################
+    public List<String> getColumnNames() {
         BrowserUtils.waitForPageToLoad(20);
         return BrowserUtils.getTextFromWebElements(columnNames);
     }
