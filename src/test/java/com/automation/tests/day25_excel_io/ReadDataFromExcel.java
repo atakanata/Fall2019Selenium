@@ -48,6 +48,15 @@ public class ReadDataFromExcel {
         System.out.println("\nIndex of last row   : " + numberOfRows);
         System.out.println("\nNumber of rows      : " + numberOfRows2);
 
+        System.out.println("##########################");
+
+        for (int row = 0; row < workSheet.getPhysicalNumberOfRows(); row++) {
+            for (int cell = 0; cell < workSheet.getRow(row).getLastCellNum(); cell++) {
+                String cellValue = workSheet.getRow(row).getCell(cell).getStringCellValue();
+                System.out.print(cellValue + " | ");
+            }
+            System.out.println();
+        }
 
     }
 }
