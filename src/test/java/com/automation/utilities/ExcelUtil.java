@@ -36,6 +36,12 @@ public class ExcelUtil {
         }
     }
 
+    /**
+     * Get the data of specific cell
+     * @param rowNum starting with 0
+     * @param colNum starting with 0
+     * @return
+     */
     public String getCellData(int rowNum, int colNum) {
         Cell cell;
         try {
@@ -61,6 +67,10 @@ public class ExcelUtil {
 
     }
 
+    /**
+     * Get data as a List<Map<<String, String>>, where key name represents column name
+     * @return
+     */
     public List<Map<String, String>> getDataList() {
         // get all columns
         List<String> columns = getColumnsNames();
@@ -93,6 +103,12 @@ public class ExcelUtil {
         return columns;
     }
 
+    /**
+     * Write something into excel file
+     * @param value what should be written
+     * @param rowNum starting with 0
+     * @param colNum starting with 0
+     */
     public void setCellData(String value, int rowNum, int colNum) {
         Cell cell;
         Row row;
