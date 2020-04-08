@@ -1,29 +1,28 @@
 package com.automation.utilities;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.IOException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class BrowserUtils {
 
     /**
      * Pause test for some time
+     *
      * @param seconds
      */
-    public static void wait(int seconds){
+    public static void wait(int seconds) {
         try {
             Thread.sleep(1000 * seconds);
         } catch (InterruptedException e) {
@@ -31,24 +30,18 @@ public class BrowserUtils {
         }
     }
 
-    public static List<String> getTextFromWebElements(List<WebElement> elements){
+    /**
+     * @param elements represents collection of WebElements
+     * @return collection of strings
+     */
+    public static List<String> getTextFromWebElements(List<WebElement> elements) {
         List<String> textValues = new ArrayList<>();
-        for (WebElement element:elements
-             ) {
+        for (WebElement element : elements) {
             if (!element.getText().isEmpty()) {
                 textValues.add(element.getText());
             }
         }
         return textValues;
-    }
-    public static void setupGiveMeUrl(WebDriver driver, String url){
-        WebDriverManager.chromedriver().version("79").setup();
-        ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.setHeadless(true);
-        driver = new ChromeDriver(chromeOptions);
-        driver.get(url);
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
     }
 
     /**
@@ -65,6 +58,7 @@ public class BrowserUtils {
             error.printStackTrace();
         }
     }
+
     /**
      * Clicks on an element using JavaScript
      *
@@ -93,12 +87,14 @@ public class BrowserUtils {
         name = new Date().toString().replace(" ", "_").replace(":", "-") + "_" + name;
         //where we gonna store a screenshot
         String path = "";
+
         if (System.getProperty("os.name").toLowerCase().contains("mac")) {
             path = System.getProperty("user.dir") + "/test-output/screenshots/" + name + ".png";
         } else {
             path = System.getProperty("user.dir") + "\\test-output\\screenshots\\" + name + ".png";
         }
-        System.out.println("OS name: "+System.getProperty("os.name"));
+
+        System.out.println("OS name: " + System.getProperty("os.name"));
         System.out.println("Screenshot is here: " + path);
         //since our reference type is a WebDriver
         //we cannot see methods from TakesScreenshot interface
@@ -115,6 +111,5 @@ public class BrowserUtils {
             e.printStackTrace();
         }
         return path;
-
     }
 }

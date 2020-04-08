@@ -26,7 +26,7 @@ import org.testng.annotations.Test;
 
  user assertions for validation.
  */
-public class VehiclesPageTests {
+public class VehiclesTests {
     private String URL = "https://qa2.vytrack.com/user/login";
     //    CREDENTIALS FOR store manager
     private String username = "storemanager85";

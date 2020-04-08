@@ -28,10 +28,15 @@ public class March22 {
      *  and override compareTo method
      *
      "a".compareTo("b") = -1
+
      61 - 62 = -1
+
      a is before b
+
      "a".compareTo("a")
+
      61 - 61 = 0
+
      0 means 2 strings are equals
      *
      */
