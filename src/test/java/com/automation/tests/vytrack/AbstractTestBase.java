@@ -31,7 +31,7 @@ public abstract class AbstractTestBase {
     @Parameters("reportName")
     public void setupTest(@Optional String reportName) {
         System.out.println("Report name: " + reportName);
-        reportName = reportName == null ? "report.html" : reportName+".html";
+        reportName = reportName == null ? "report.html" : reportName + ".html";
 
         report = new ExtentReports();
 

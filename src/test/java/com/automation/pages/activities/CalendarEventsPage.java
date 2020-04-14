@@ -61,6 +61,7 @@ public class CalendarEventsPage extends AbstractPageBase {
     }
 
     public void clickOnSaveAndClose() {
+        BrowserUtils.wait(3);
         wait.until(ExpectedConditions.elementToBeClickable(saveAndClose)).click();
     }
 
