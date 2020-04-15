@@ -7,6 +7,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class WriteIntoExcelFile {
 
@@ -18,13 +20,22 @@ public class WriteIntoExcelFile {
 
         Sheet sheet = workbook.getSheet("QA3-short");
         Row row = sheet.getRow(1);//2nd row
-        Cell cell = row.getCell(row.getLastCellNum() - 1);//last column
+        Cell cell = row.getCell(5);//get result column
 
         System.out.println("Before: " + cell.getStringCellValue());
         cell.setCellValue("FAILED");//I am changing from n/a to passed
         System.out.println("After: " + cell.getStringCellValue());
 
-        Row firstRow = sheet.getRow(0);
+        Row firstRow = sheet.getRow(0); // get first row
+        Cell newCell = firstRow.createCell(6);//create new cell
+        newCell.setCellValue("Date of execution");//give the name to this cell
+
+        //write date and time info into second row, last column
+
+        Row secondRow = sheet.getRow(1);
+        Cell newCell2 = secondRow.createCell(6);//create a cell
+        newCell2.setCellValue(LocalDateTime.now().toString());//I will set current date and time info into new cell
+
 
 
         //I crete if I want to write something into the file
